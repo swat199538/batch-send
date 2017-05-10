@@ -1,0 +1,167 @@
+.tool-wrapper{
+    width: 1600px;
+    margin: 0 auto;
+}
+
+.tool-box{
+    margin-top: 15px;
+    width: 100%;
+    height: 750px;
+    border: solid 1px #6e879a;
+}
+
+.tool-box > .sms-content{
+    float: left;
+    width: 60%;
+    height: 100%;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.group-sms{
+    margin-top: 15px;
+    width: 900px;
+    overflow: hidden;
+}
+.group-sms > .left{
+    float: left;
+    width: 15%;
+    padding-top: 5px;
+}
+.left > .title{
+    color: #5b5d63;
+    font-size: 18px;
+}
+
+.group-sms > .right{
+    float: right;
+    width: 85%;
+}
+.receive-area{
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 710px;
+    height: 210px;
+    border: solid 1px #75878b;
+    border-radius: 5px;
+}
+.focus{
+    border: solid 1px #2ec5c2 !important;
+    box-shadow: 0 0 1px 1px rgba(0, 255, 233, 0.65);
+}
+.input-info{
+    margin-left: 15px;
+}
+.notice-icon {
+    position: relative;
+    top: 3px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    background: url(../img/pro-icon1.png) -10px -705px no-repeat;
+}
+.receive-text{
+    width: 700px;
+    height: 185px;
+    border: none;
+    resize: none;
+    margin-left: 5px;
+}
+.word-count{
+    float: right;
+}
+
+.btn-style{
+    display: inline-block;
+    padding: 6px 24px;
+    font-size: 15px;
+    line-height: 22px;
+    color: #fff;
+    background-color: #2fb26a;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    margin-left: 15px
+}
+.btn-style:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.download{
+    display: inline-block;
+    padding-left: 30px;
+    background: url(../img/pro-icon1.png) 0px -643px no-repeat;
+}
+.auto-graph{
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border: 0;
+    overflow: visible;
+    padding: 0;
+    margin-right: 0;
+    color: #8d959a;
+    line-height: 24px;
+}
+.auto-graph-input{
+    border: 0;
+    width: 70px;
+    overflow: visible;
+    padding: 0 2px;
+    margin-right: 0;
+    text-decoration: underline;
+    color: #8d959a;
+}
+.flt-1{
+    float: left;
+}
+
+
+.sms-preview{
+    float: right;
+    width: 35%;
+}
+.preview-wrapper{
+    margin-top: 150px;
+    margin-left: 100px;
+}
+.img-model{
+    width: 200px;
+    height: 378px;
+    position: relative;
+    display: inline-block;
+    background: url(../img/pro-msg-model.png) 0px 0px no-repeat;
+}
+.bubble{
+    position: relative;
+    margin-top: 42%;
+    margin-left: 11%;
+    width: 150px;
+    border-radius: 5px;
+    background-color: currentColor;
+    color: #ddd;
+    max-height: 200px;
+    overflow: auto;
+    word-break: break-all;
+}
+.bubble:before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    bottom: 0px;
+    width: 7px;
+    height: 6px;
+    border-width: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-top-width: 5px;
+    border-top-color: currentColor;
+    border-radius: 12px 0 0 0;
+    color: #dddddd;
+}
+.talk{
+    color: black;
+}
+.preview-info{
+    margin: 15px 70px;
+}

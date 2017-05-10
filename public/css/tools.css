@@ -1,0 +1,160 @@
+.tool-wrapper{
+    width: 1000px;
+    margin: 0 auto;
+}
+.left-phone{
+    width: 200px;
+    float: left;
+}
+.phone-number{
+    height: 500px;
+    /*background-color: #0F3A56;*/
+    border: solid 1px black;
+    margin-top: 5px;
+    overflow: auto;
+}
+.phone-number > h2{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+.phone-number > ul > li{
+    font-size: 18px;
+    margin-left: 10px;
+    border-bottom: solid 1px black;
+}
+.del{
+    cursor: pointer;
+    color: red;
+    font-size: 16px;
+    margin-left: 15px;
+}
+.mt{
+    margin-top: 5px;
+    margin-bottom: 0px !important;
+}
+.import-number{
+    height: 150px;
+    /*background-color: #00be2e;*/
+}
+
+
+/*文本信息*/
+.message{
+    width: 790px;
+    float: left;
+    margin: 5px 5px 0px 5px;
+}
+.notice{
+    height: 150px;
+    /*background-color: #00be2e;*/
+    border: solid 1px black;
+}
+.notice > h2{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+.message-temple{
+    margin-top: 5px;
+    height: 343px;
+    border: solid 1px black;
+    overflow: auto;
+}
+.message-temple > h2{
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.op-minifilter-main {
+    border-top: 1px solid black;
+}
+.c-container table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table.op-imprecise-main td {
+    padding-left: 0;
+}
+
+.c-table td {
+    padding-top: 6.5px;
+    padding-bottom: 6.5px;
+}
+
+.c-table th, .c-table td {
+    padding-left: 10px;
+    line-height: 1.54;
+    font-size: 13px;
+    border-bottom: 1px solid black;
+    text-align: left;
+}
+
+.c-container td {
+    font-size: 13px;
+    line-height: 1.54;
+}
+
+td {
+    font-size: 9pt;
+    line-height: 18px;
+}
+
+body, th, td, .p1, .p2 {
+    font-family: arial;
+}
+
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+
+.c-container table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.c-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: black;
+}
+
+#content_left .result-op, #content_left .result {
+    margin-bottom: 14px;
+    border-collapse: collapse;
+}
+.c-container {
+    width: 538px;
+    font-size: 13px;
+    line-height: 1.54;
+    word-wrap: break-word;
+}
+.op-imprecise-ieposition {
+    position: relative;
+}
+.op-imprecise-left {
+    width: 600px;
+    padding-right: 20px;
+}
+.op-imprecise-left, .op-imprecise-right {
+    float: left;
+}
+
+.message-edit{
+    height: 130px;
+    margin-top: 25px;
+}
+
+.use-temple{
+    color: red;
+    cursor: pointer;
+}
