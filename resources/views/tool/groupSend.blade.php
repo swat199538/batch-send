@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/tools2.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/fileinput.min.css')}}">
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{{URL::asset('/plugin/layer/layer.js')}}"></script>
     <script src="{{URL::asset('/js/ajaxfileupload.js')}}"></script>
 </head>
 <body>
@@ -74,12 +75,12 @@
                                         <input style="display: none;" name="file" type="file" id="excel_file">
                                     </form>
                                     <a id="importBtn" class="btn-style">导入号码</a>
-                                    <a href="" class="download">下载号码模版</a>
+                                    <a href="{{url('/download/excel')}}" class="download">下载号码模版</a>
                                     <div id="receive-area" class="receive-area">
-                                        <textarea id="phone-numbers" placeholder="例如：18889462200，1586208020   每个号码以英文“,”号分隔" id="receive-phone" class="receive-text"></textarea>
-                                        <p class="word-count"><span>0</span>/10000</p>
+                                        <textarea id="phone-numbers" placeholder="每个号码以换行为分隔" id="receive-phone" class="receive-text"></textarea>
+                                        <p class="word-count"><span id="countWord">0</span>/100000</p>
                                     </div>
-                                    <p class="input-info"><span class="notice-icon"></span>最多<span>10000</span>个，成功<span id="success-count">0</span>个，<span id="repeat-count">0</span>个重复，<span id="error-count">0</span>个格式错误</p>
+                                    <p class="input-info"><span class="notice-icon"></span>最多<span>100000</span>个(超出部分自动忽略，检查号码会自动格式)，成功<span id="success-count">0</span>个，<span id="repeat-count">0</span>个重复，<span id="error-count">0</span>个格式错误</p>
                                 </div>
                             </div>
 
@@ -119,7 +120,8 @@
     </div>
 </div>
 <script>
-    //样式JS
+    var isAjax = 0;
+
     $('.receive-text').on('focus', function () {
         $(this).parent().addClass('focus');
     });
@@ -148,10 +150,75 @@
         var content = $("#msg-content").val().length;
         var wordCount = sign+content;
         var msgCount = parseInt(wordCount / 64) + 1;
-        console.log(msgCount);
-//        console.log('字数:'+wordCount+'拆分条数:'+msgCount);
         $("#msgCount").text(msgCount);
         $("#wordCount").text(wordCount);
+    }
+
+    function checkPhone(numbers)
+    {
+        layer.msg('玩命检查中，请稍等',{
+            time:100000
+        });
+        var trueNumers = [];
+        var error = 0;
+        var repeat = 0;
+        //去重和检查格式
+        for (var i=0; i< numbers.length; i++){
+            if (trueNumers.indexOf(numbers[i]) === -1){
+                if((/^1[34578]{1}\d{9}$/.test(numbers[i]))){
+                    trueNumers.push(numbers[i]);
+                } else {
+                    error ++;
+                }
+            } else {
+                repeat ++;
+            }
+        }
+        var trueDome = '';
+        for (var i in  trueNumers){
+            trueDome += trueNumers[i]+'\n';
+        }
+        $("#phone-numbers").val(trueDome);
+        $("#success-count").text(trueNumers.length);
+        $("#error-count").text(error);
+        $("#repeat-count").text(repeat);
+        layer.closeAll();
+    }
+
+    function severCheckPhone(number)
+    {
+        if (isAjax == 0){
+            layer.msg('玩命检查中！',{
+               time:100000
+            });
+            isAjax = 1;
+            $.post(
+                '{{url('/check/phone')}}',
+                {
+                    'number':number,
+                    '_token':'{{csrf_token()}}'
+                },
+                function (data) {
+                    isAjax = 0;
+                    data = $.parseJSON(data);
+                    if (data['code'] == 'success'){
+                        var trueDome = '';
+                        for (var i in  data['msg']['phone']){
+                            trueDome += data['msg']['phone'][i]+'\n';
+                        }
+                        $("#phone-numbers").val(trueDome);
+                        $("#success-count").text(data['msg']['success']);
+                        $("#wordCount").text(data['msg']['success']);
+                        $("#error-count").text(data['msg']['illegal']);
+                        $("#repeat-count").text(data['msg']['repeat']);
+                        layer.closeAll();
+                    } else {
+                        layer.closeAll();
+                        layer.msg(data['msg']);
+                    }
+                }
+            );
+        }
     }
     
     $("#signature").on('focus', function () {
@@ -186,35 +253,11 @@
 
     $("#check-phone").on('click', function () {
        var numbers = $("#phone-numbers").val().split('\n');
-       console.log(numbers);
-       //var noRepeatNumber = [];
-       var trueNumers = [];
-       var error = 0;
-       var repeat = 0;
-        //去重和检查格式
-        for (var i=0; i< numbers.length; i++){
-            if (trueNumers.indexOf(numbers[i]) === -1){
-                if((/^1[34578]{1}\d{9}$/.test(numbers[i]))){
-                    trueNumers.push(numbers[i]);
-                } else {
-                    error ++;
-                }
-            } else {
-                repeat ++;
-            }
-        }
-
-       var trueDome = '';
-
-       for (var i in  trueNumers){
-           trueDome += trueNumers[i]+'\n';
+       if (numbers.length <= 15000){
+           checkPhone(numbers);
+       } else {
+           severCheckPhone(numbers);
        }
-        $("#phone-numbers").val(trueDome);
-        $("#success-count").text(trueNumers.length);
-        $("#error-count").text(error);
-        $("#repeat-count").text(repeat);
-
-
     });
 
     $("#importBtn").click(function () {
@@ -222,6 +265,10 @@
     });
 
     $("#excel_file").change(function () {
+        //弹出等待层
+        layer.msg('玩命导入中',{
+            time:100000
+        });
         var formData = new FormData();
         formData.append('file', $("#excel_file")[0].files[0]);
         formData.append('_token', '{{csrf_token()}}');
@@ -234,15 +281,22 @@
             contentType: false
         }).done(function(data) {
             data = $.parseJSON(data);
-            if (data['code'] == 'fail'){
-                alert(data['msg']);
+            if (data['code'] == 'error'){
+                layer.msg(data['msg'],{
+                    time:2000
+                });
             } else {
-                    var phone = '';
-                    for (var i in data['msg']['number']){
-                        phone += data['msg']['number'][i]+'\n';
-                    }
-                    var old = $("#phone-numbers").val();
-                    $("#phone-numbers").val(old+phone);
+                layer.closeAll();
+                var phone = '';
+                for (var i in data['msg']['number']){
+                    phone += data['msg']['number'][i]+'\n';
+                }
+                var old = $("#phone-numbers").val();
+                $("#phone-numbers").val(old+phone);
+                $("#success-count").text(data['msg']['success']);
+                $("#countWord").text(data['msg']['success']);
+                $("#repeat-count").text(data['msg']['repeat']);
+                $("#error-count").text(data['msg']['illegal']);
             }
         }).fail(function() {
             alert('文件上传失败！');

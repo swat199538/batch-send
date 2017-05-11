@@ -23,6 +23,14 @@ Route::get('/qunfa', 'IndexController@groupSend');
 
 
 //文件上传
-Route::any('/upload', 'ExcelController@upload')->middleware([
-    'middleware'=>'web'
-]);
+Route::any('/upload', 'ExcelController@upload');
+
+//模版Excel下载
+Route::get('/download/excel', function (){
+    return response()->download(
+        realpath(base_path('public/')).'/file/sms-template.xls','sms-template.xls'
+    );
+});
+
+//AJAX检查手机号码格式
+Route::post('/check/phone', 'ExcelController@checkPhone');

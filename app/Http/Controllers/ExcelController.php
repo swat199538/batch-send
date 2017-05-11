@@ -14,17 +14,18 @@ class ExcelController extends Controller
     public function upload(Request $request)
     {
         if (!$request->hasFile('file')){
-            return [
+            return json_encode([
                 'code'=>'error',
                 'msg'=>'没有上传文件'
-            ];
+            ]);
         }
         $file = $request->file('file');
-        if ($file->getClientOriginalExtension()!='xlsx'){
-            return [
+        $suffix = $file->getClientOriginalExtension();
+        if ($suffix!='xls'&&$suffix!='xlsx'){
+            return json_encode([
                 'code'=>'error',
-                'msg'=>'文件格式错误,非xls'
-            ];
+                'msg'=>'文件格式错误,不想是xls或者xlsx文件'
+            ]);
         }
         $page = Storage::disk('local')->putFileAs('temple', $file, time().rand(1,999).'.xlsx');
         $render = Excel::load(storage_path('app/').$page);
@@ -50,17 +51,68 @@ class ExcelController extends Controller
             }
             return true;
         });
+        //成功号码
+        $successCount = count($newData);
         //非法号码
-        $illegalCount = $newCount - count($newData);
+        $illegalCount = $newCount - $successCount;
         //删除临时文件
         return json_encode([
             "code"=>"success",
             "msg"=>[
                 'repeat'=>$repeatCount,
                 'illegal'=>$illegalCount,
+                'success'=>$successCount,
                 'number'=>$newData
             ]
         ]);
+
+    }
+
+    public function checkPhone(Request $request)
+    {
+        $phone = $request->input('number');
+        if (empty($phone)){
+            return json_encode([
+                'code'=>'fail',
+                'msg'=>'没有手机号码'
+            ]);
+        }
+        $oldCount = count($phone);
+
+        if ($oldCount > 100000){
+            for ($i = 100000; $i <= $oldCount; $i++){
+                unset($phone[$i]);
+            }
+            $oldCount = count($phone);
+        }
+
+        $phone = array_unique($phone);
+        $uniqueCount = count($phone);
+
+        $repeatCount = $oldCount - $uniqueCount;
+
+        $phone = array_filter($phone, function ($value){
+            if(!preg_match('/^1[34578]{1}\d{9}$/', $value)){
+                return false;
+            }
+            return true;
+        });
+
+        $successCount = count($phone);
+
+        $illegalCount = $uniqueCount - $successCount;
+
+        return json_encode([
+            'code'=>'success',
+            'msg'=>[
+                'success'=>$successCount,
+                'illegal'=>$illegalCount,
+                'repeat'=>$repeatCount,
+                'phone'=>$phone
+            ]
+        ]);
+
+
 
     }
 
