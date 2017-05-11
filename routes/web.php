@@ -15,22 +15,21 @@ Route::get('/', function () {
     return 'hello world';
 });
 
-//老的短信群发页面
-Route::get('/tool/sales', 'IndexController@index');
+Route::group(['namespace'=>'SmsAssistant'], function(){
 
-//新的短信群发页面
-Route::get('/qunfa', 'IndexController@groupSend');
+    //新的短信群发页面
+    Route::get('/qunfa', 'IndexController@groupSend');
 
+    //文件上传
+    Route::any('/upload', 'ExcelController@upload');
 
-//文件上传
-Route::any('/upload', 'ExcelController@upload');
+    //模版Excel下载
+    Route::get('/download/excel', function (){
+        return response()->download(
+            realpath(base_path('public/')).'/file/sms-template.xls','sms-template.xls'
+        );
+    });
 
-//模版Excel下载
-Route::get('/download/excel', function (){
-    return response()->download(
-        realpath(base_path('public/')).'/file/sms-template.xls','sms-template.xls'
-    );
+    //AJAX检查手机号码格式
+    Route::post('/check/phone', 'ExcelController@checkPhone');
 });
-
-//AJAX检查手机号码格式
-Route::post('/check/phone', 'ExcelController@checkPhone');
