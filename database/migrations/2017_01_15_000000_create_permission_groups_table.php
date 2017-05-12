@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateBaoTempleCategory extends Migration
+class CreatePermissionGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateBaoTempleCategory extends Migration
      */
     public function up()
     {
-        Schema::create('bao_template_category', function(Blueprint $table){
+        Schema::create('permission_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('category_name');
-            $table->timestamps();
+            $table->string('name')->unique();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateBaoTempleCategory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('permission_groups');
     }
 }

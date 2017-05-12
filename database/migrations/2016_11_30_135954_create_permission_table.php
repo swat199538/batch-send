@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateBaoInfoStorage extends Migration
+class CreatePermissionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateBaoInfoStorage extends Migration
      */
     public function up()
     {
-        Schema::create('bao_info_storage', function(Blueprint $table){
+        Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('cookie');
-            $table->text('sms');
-            $table->json('phones');
+            $table->string('key')->index();
+            $table->string('table_name');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateBaoInfoStorage extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('permissions');
     }
 }

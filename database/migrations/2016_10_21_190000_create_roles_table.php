@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateBaoSmsTemple extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateBaoSmsTemple extends Migration
      */
     public function up()
     {
-        Schema::create('bao_sms_template', function(Blueprint $table){
+        Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedTinyInteger('category');
-            $table->text('content');
+            $table->string('name')->unique();
+            $table->string('display_name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateBaoSmsTemple extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('roles');
     }
 }
