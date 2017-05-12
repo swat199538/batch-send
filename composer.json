@@ -9,7 +9,8 @@
         "barryvdh/laravel-ide-helper": "^2.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "maatwebsite/excel": "^2.1"
+        "maatwebsite/excel": "^2.1",
+        "tcg/voyager": "^0.11.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

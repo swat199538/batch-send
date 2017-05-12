@@ -31,3 +31,7 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
     //AJAX检查手机号码格式
     Route::post('/check/phone', 'ExcelController@checkPhone');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

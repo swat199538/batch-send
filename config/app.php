@@ -181,6 +181,9 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         //Laravel-Excel
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        //Laravel-Voyager
+        TCG\Voyager\VoyagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
 
     /*
