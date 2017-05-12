@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return 'hello world';
-});
 
 Route::group(['namespace'=>'SmsAssistant'], function(){
+    Route::get('/', 'IndexController@index');
 
     //新的短信群发页面
-    Route::get('/qunfa', 'IndexController@groupSend');
+    Route::get('/qunfa', 'IndexController@index');
 
     //文件上传
     Route::any('/upload', 'ExcelController@upload');
