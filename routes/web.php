@@ -13,10 +13,15 @@
 
 
 Route::group(['namespace'=>'SmsAssistant'], function(){
-    Route::get('/', 'IndexController@index');
+
+    Route::get('/', function(){
+        return '我是首页';
+    });
+
+    Route::get('/send', 'IndexController@sendSms');
 
     //新的短信群发页面
-    Route::get('/qunfa', 'IndexController@index');
+    Route::get('/qunfa/{id}', 'IndexController@index');
 
     //文件上传
     Route::any('/upload', 'ExcelController@upload');
