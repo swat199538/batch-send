@@ -101,6 +101,7 @@
                                         <textarea name="content" id="msg-content" style="text-indent:85px;line-height: 31px; " placeholder="请输入短信内容" class="receive-text">{{$TempleInfo->content}}</textarea>
                                     </div>
                                     <p class="input-info"><span class="notice-icon"></span>已输入<span id="wordCount">7</span>字,最多325字(含签名),拆分为<span id="msgCount"></span>条短信</p>
+                                    <p class="input-info"><span class="notice-icon"></span>已输入<span id="wordCount">7</span>字,最多325字(含签名),拆分为<span id="msgCount"></span>条短信</p>
                                     <p><a id="check-phone" class="btn-style">检查号码</a><a id="sendSms" class="btn-style">发送</a></p>
                                 </div>
                             </div>

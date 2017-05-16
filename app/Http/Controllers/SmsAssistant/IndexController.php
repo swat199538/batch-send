@@ -40,11 +40,16 @@ class IndexController extends Controller
         $taskId = md5($this->uuid.time());
 
         if ($assistantSubmitLog->saveNewSubmitLog($this->uuid, $numbers, $content, $category, $template, $taskId)){
-            $url = "http://www.dxb.com?uuid=".$this->uuid."&taskId=".$taskId;
+            $url = "http://www.smsbao.com/member/sms/assistant_send.jhtml?uuid=".$this->uuid."&taskId=".$taskId;
             return redirect()->away($url);
         } else{
             return back()->withInput()->withErrors(['msg'=>'提交失败']);
         }
+
+    }
+
+    public function getGroupSms($uuid, $taskid, $token)
+    {
 
     }
 

@@ -35,6 +35,10 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
 
     //AJAX检查手机号码格式
     Route::post('/check/phone', 'ExcelController@checkPhone');
+
+    //获取短信
+    Route::get('/assistant/{uuid}/{taskId}', 'IndexController@getGroupSms');
+
 });
 
 Route::group(['prefix' => 'admin'], function () {
