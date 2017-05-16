@@ -3,24 +3,30 @@
 namespace App\Http\Controllers\SmsAssistant;
 
 use App\Http\Controllers\Controller;
+use App\Model\assistantTemple;
 use Illuminate\Http\Request;
-use App\SmsTemple;
 
 class IndexController extends Controller
 {
-    //显示小工具首页
-    public function index(SmsTemple $smsTemple)
+    public function __construct()
     {
-        $templeData = $smsTemple->getTempleByCategory();
-        return view('group-message.index')->with([
-            'temple'=>$templeData
-        ]);
     }
 
     //短信群发页面
-    public function groupSend()
+    public function index(assistantTemple $assistantTemple, $id)
     {
-        return view('tool.groupSend');
+        $TempleInfo = $assistantTemple->getTempleById($id);
+        if ($TempleInfo == null){
+            return '没有模版';
+        }
+        return view('tool.groupSend')->with(['TempleInfo'=>$TempleInfo]);
+    }
+
+
+    //发送短信
+    public function sendSms()
+    {
+
     }
 
 }
