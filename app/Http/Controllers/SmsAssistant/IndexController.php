@@ -3,13 +3,20 @@
 namespace App\Http\Controllers\SmsAssistant;
 
 use App\Http\Controllers\Controller;
+use App\Model\AssistantSubmitLog;
 use App\Model\assistantTemple;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function __construct()
+    private $uuid = '';
+
+    public function __construct(Request $request)
     {
+        $this->uuid = $request->cookie('uuid');
+        if($this->uuid == null){
+            setcookie('uuid', md5(time().rand(10000,99999)), time()+3600*168, '/');
+        }
     }
 
     //短信群发页面
@@ -17,15 +24,27 @@ class IndexController extends Controller
     {
         $TempleInfo = $assistantTemple->getTempleById($id);
         if ($TempleInfo == null){
-            return '没有模版';
+            return '没有此模版';
         }
         return view('tool.groupSend')->with(['TempleInfo'=>$TempleInfo]);
     }
 
 
     //发送短信
-    public function sendSms()
+    public function sendSms(Request $request, AssistantSubmitLog $assistantSubmitLog, assistantTemple $assistantTemple)
     {
+        $numbers = json_encode(explode("\r\n", $request->input('numbers')));
+        $content = '['.$request->input('signature').']'.$request->input('content');
+        $template = $request->input('id');
+        $category = $assistantTemple->getCategory($template);
+        $taskId = md5($this->uuid.time());
+
+        if ($assistantSubmitLog->saveNewSubmitLog($this->uuid, $numbers, $content, $category, $template, $taskId)){
+            $url = "http://www.dxb.com?uuid=".$this->uuid."&taskId=".$taskId;
+            return redirect()->away($url);
+        } else{
+            return back()->withInput()->withErrors(['msg'=>'提交失败']);
+        }
 
     }
 

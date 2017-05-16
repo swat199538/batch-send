@@ -18,7 +18,7 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
         return '我是首页';
     });
 
-    Route::get('/send', 'IndexController@sendSms');
+    Route::post('/send', 'IndexController@sendSms')->middleware('smsinfo');
 
     //新的短信群发页面
     Route::get('/qunfa/{id}', 'IndexController@index');
