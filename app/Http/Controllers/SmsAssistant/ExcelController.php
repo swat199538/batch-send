@@ -31,7 +31,7 @@ class ExcelController extends Controller
         $page = Storage::disk('local')->putFileAs('temple', $file, time().rand(1,999).'.xlsx');
         $render = Excel::load(storage_path('app/').$page);
         Storage::disk('local')->delete($page);
-        $info =$render->takeRows(100000)->toArray();
+        $info =$render->takeRows(50000)->toArray();
         $newData = [];
         foreach ($info as $key=>$value){
             //格式化

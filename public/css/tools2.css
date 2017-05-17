@@ -165,3 +165,11 @@
 .preview-info{
     margin: 15px 70px;
 }
+#content-view{
+    font-size: 10px;
+}
+.disability{
+    background-color: #7b8981 !important;
+    color: #aeaeaa !important;
+    cursor: none !important;
+}

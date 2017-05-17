@@ -11,14 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return 'hello world';
-});
 
 Route::group(['namespace'=>'SmsAssistant'], function(){
 
+    Route::get('/', function(){
+        return '我是首页';
+    });
+
+    Route::post('/send', 'IndexController@sendSms')->middleware('smsinfo');
+
     //新的短信群发页面
-    Route::get('/qunfa', 'IndexController@groupSend');
+    Route::get('/qunfa/{id}', 'IndexController@index');
 
     //文件上传
     Route::any('/upload', 'ExcelController@upload');
@@ -32,6 +35,9 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
 
     //AJAX检查手机号码格式
     Route::post('/check/phone', 'ExcelController@checkPhone');
+
+    //获取短信
+    Route::get('/assistant/{uuid}/{taskId}/{token}', 'IndexController@getGroupSms');
 });
 
 Route::group(['prefix' => 'admin'], function () {
