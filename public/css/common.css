@@ -306,7 +306,7 @@ a{text-decoration: none;}
 .navbar li ul li.active a{color: #1d6291;}
 .navbar li.active ul li a{color: #333;}
 .navbar li ul li a:hover{color: #339cd5;}
-.footer{background: url("../images/footer-bg.png") repeat-x; height: 248px; width: 100%; float: left;}
+.footer{background: url("../img/footer-bg.png") repeat-x; height: 248px; width: 100%; float: left;}
 .footer-nav-box{float: left;}
 .footer .service{width: 134px; margin-left: 14px;}
 .footer .aboutus{width: 172px;}
@@ -556,3 +556,5 @@ span.angel {background: url(../images/angel_3.png) no-repeat left 0px;position: 
 .search{width:245px; position:relative; margin-top:20px}
 .search-text{-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;background-color:#fff;border:1px solid #cecece;padding:5px 10px;width:245px; width:215px\9; height:35px; height:26px\9; color:#a5a5a5}
 .search-btn{position:absolute;top:3px;right:0; right:22px\9; z-index:22;width:30px;height:30px;background:url(../images/search-btn.gif) no-repeat;border:0}
+.footer-box .first{float:left;display:block;margin:3px 10px;padding:5px;}
+.webContainer .product{width:445px;}

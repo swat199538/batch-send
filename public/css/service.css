@@ -1,0 +1,83 @@
+html{background-color: #ffffff !important;}
+.services-banner{
+    position: relative;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 40px 0;
+    margin: 0;
+    text-align: left;
+-webkit-linear-gradient(200deg, #48227d 0%, #2f569c 100%);
+    background-image: linear-gradient(-110deg, #48227d 0%, #2f569c 100%);
+    background-color: #48227d;
+    overflow: hidden;
+}
+.container{
+    width: 980px;
+    margin: 0 auto;
+}
+.column{
+    float: left;
+}
+.one-half{
+    width: 52%;
+}
+.one-two{
+    width: 48%;
+}
+.directory-header{
+    color: #96dad9;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.directory-tag{
+    margin-bottom: 0;
+    font-size: 28px;
+    font-weight: 400;
+    color: #ffffff;
+}
+.lead{
+    margin-top: 10px;
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: normal;
+    color: #d7def1;
+}
+.services-nav{position:absolute;top:324px;background:#F1F1F1;box-shadow:1px 1px 3px #cfcfcf;width:100%;left:0;z-index:30;}
+.services-nav .about_site{width:1000px;margin:0 auto;line-height:50px;font-size:12px;color:#444;position:relative;z-index:10;}
+.services-content{width:100%;background:#fff;margin:0 auto;padding-bottom:0;}
+.services-content .service-left{float:left;overflow:hidden;}
+.services-content .sitecon{width:1200px;margin:0 auto;overflow:hidden;}
+.services-content .sitecon .services-show-t{width:750px;height:200px;margin:50px 0;border:2px solid #bcbcbc;background:#dadada;border-radius:35px;padding:20px;}
+.services-content .sitecon .services-show-t-s{border-radius:25px;min-height:205px;background:#efefef;}
+.services-content .sitecon .services-show-t-s .title{padding-top:12px;float:left;height:192px;font-size:22px;width:40px;padding-left:22px;line-height:45px;background:#fff;border-right:3px solid #e0e0e0;color:#929292;border-top-left-radius:25px;border-bottom-left-radius:25px; }
+.services-content .sitecon .services-show-t-s .cate{margin-left:20px;float:left;width:655px;}
+.services-content .sitecon .services-show-t-s .cate li{width:150px;float:left;min-height:160px;margin-top:25px;border-right:1px solid #ccc;padding-right:10px;}
+.services-content .sitecon .services-show-k{width:750px;margin:50px 0;border:2px solid #bcbcbc;border-radius:35px;background:#dadada;padding:30px;}
+.services-content .sitecon .services-show-s{border-radius:25px;min-height:880px;background:#efefef;}
+.services-content .sitecon .services-title{height:70px;background:#fff;border-bottom:3px solid #e0e0e0;border-top-left-radius:25px;border-top-right-radius:25px;}
+.services-content .sitecon .services-title .date{line-height:38px;float:left;color:#606060;font-size:20px;padding-left:30px;cursor:pointer;margin-top:23px;}
+.services-content .sitecon .services-title .date p{float:left;}
+.services-content .sitecon .services-title h3{color:#606060;line-height:70px;width:180px;margin:0 auto;text-align:center;font-size:25px;}
+.services-content .sitecon .services-title a{color:#606060;display:block;width:50px;position:relative;right:-675px;top:-43px;font-size:20px;}
+.services-content .sitecon .services-title a:hover{color:#b1b1b1;}
+.services-content .sitecon .services-show-s ul li{width:33%;float:left;min-height:200px;}
+.services-content .sitecon .services-show-s .service{margin:15px 15px 0px 15px;height:160px;border:2px solid #cecece;border-radius:7px;background:#fff;}
+.services-content .sitecon .service-main{width:140px;border-right:1px solid #cecece;padding:7px 1px 0 19px;font-size:13px;margin-top:20px;font-family:'宋体';min-height:110px;overflow:hidden;}
+.services-content .sitecon .service a{position:relative;top:-80px;left:170px;font-size:13px;padding:3px;line-height:20px;display:inline-block;width:30px;color:#85a5d1;}
+.services-content .sitecon .service a:hover{color:#000;}
+
+.services-content .service-right{float:left;width:386px;}
+.services-content .service-right .groom{width:260px;margin:0 auto;margin-top:50px;border:3px solid #e0e0e0;border-top-left-radius:14px;border-top-right-radius:14px;}
+.services-content .service-right .groom span{font-size:17px;margin:20px 0 0 15px;width:220px;display:block;font-weight:bolder;color:#626262;padding-bottom:5px;border-bottom:1px solid #c3c3c3;}
+.services-content .service-right .groom ul{margin:5px 15px;font-size:16px;}
+.services-content .service-right .groom ul li{margin:20px 0px;}
+.services-content .service-right .groom ul li a{color:#4f662f;line-height:20px;}
+.services-content .service-right .groom ul li a:hover{color:#77c30c;}
+.services-content .service-right .groom ul li i{float:left;padding-right:10px;}
+.services-content .service-right .hot{width:260px;margin:0 auto;margin-top:30px;border:3px solid #e0e0e0;border-bottom-left-radius:14px;border-bottom-right-radius:14px;}
+.services-content .service-right .hot span{font-size:17px;margin:20px 0 0 15px;width:220px;display:block;font-weight:bolder;color:#626262;padding-bottom:5px;border-bottom:1px solid #c3c3c3;}
+.services-content .service-right .hot ul{margin:5px 15px;font-size:16px;}
+.services-content .service-right .hot ul li{color:#4f662f;line-height:20px;margin:20px 0px;}
+.services-content .service-right .hot ul li a{color:#4f662f;}
+.services-content .service-right .hot ul li a:hover{color:#b1c09d;}

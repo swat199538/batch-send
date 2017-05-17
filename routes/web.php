@@ -33,10 +33,21 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
         );
     });
 
+    Route::get('/test2', function (){
+       $a = (object)[
+           'a'=>'123',
+           'b'=>311
+       ];
+       echo $a->a;
+    });
+
     //AJAX检查手机号码格式
     Route::post('/check/phone', 'ExcelController@checkPhone');
 });
 
+Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){
+   Route::get('/{cid?}','IndexController@index');
+});
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
