@@ -48,8 +48,15 @@ class IndexController extends Controller
 
     }
 
-    public function getGroupSms($uuid, $taskid, $token)
+    public function getGroupSms($uuid, $taskid, $token, AssistantSubmitLog $assistantSubmitLog)
     {
+        if ($token != 'dxb2048'){
+            return response()->json(['code'=>'1']);
+        }
+
+        $info = $assistantSubmitLog->getTaskByTaskIdAndUuid($uuid, $taskid);
+
+        return response()->json($info);
 
     }
 

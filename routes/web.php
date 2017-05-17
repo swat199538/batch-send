@@ -37,8 +37,7 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
     Route::post('/check/phone', 'ExcelController@checkPhone');
 
     //获取短信
-    Route::get('/assistant/{uuid}/{taskId}', 'IndexController@getGroupSms');
-
+    Route::get('/assistant/{uuid}/{taskId}/{token}', 'IndexController@getGroupSms');
 });
 
 Route::group(['prefix' => 'admin'], function () {
