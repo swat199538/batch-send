@@ -13,4 +13,10 @@ class assistantTemple extends Model
         return parent::find($id);
     }
 
+    public function getCategory($id)
+    {
+        $obj = parent::find($id);
+        return $obj->category_id;
+    }
+
 }

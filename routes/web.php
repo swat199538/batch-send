@@ -18,7 +18,7 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
         return '我是首页';
     });
 
-    Route::get('/send', 'IndexController@sendSms');
+    Route::post('/send', 'IndexController@sendSms')->middleware('smsinfo');
 
     //新的短信群发页面
     Route::get('/qunfa/{id}', 'IndexController@index');
@@ -43,6 +43,9 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
 
     //AJAX检查手机号码格式
     Route::post('/check/phone', 'ExcelController@checkPhone');
+
+    //获取短信
+    Route::get('/assistant/{uuid}/{taskId}/{token}', 'IndexController@getGroupSms');
 });
 
 Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){

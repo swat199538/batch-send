@@ -56,7 +56,11 @@
             <div class="tool-wrapper">
                 <div class="tool-box">
                     <div class="sms-content">
+                        <form id="fileData" enctype="multipart/form-data">
+                            <input style="display: none;" name="file" type="file" id="excel_file">
+                        </form>
                         <form id="sendInfo" action="{{url('/send')}} " method="post">
+                            <input type="hidden" name="id" value="{{$TempleInfo->id}}">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="group-sms">
                                 <div class="left">
@@ -73,9 +77,6 @@
                                     <label class="title">接收号码</label>
                                 </div>
                                 <div class="right">
-                                    <form id="fileData" enctype="multipart/form-data">
-                                        <input style="display: none;" name="file" type="file" id="excel_file">
-                                    </form>
                                     <a id="importBtn" class="btn-style">导入号码</a>
                                     <a href="{{url('/download/excel')}}" class="download">下载号码模版</a>
                                     <div id="receive-area" class="receive-area">
@@ -99,6 +100,7 @@
                                         </div>
                                         <textarea name="content" id="msg-content" style="text-indent:85px;line-height: 31px; " placeholder="请输入短信内容" class="receive-text">{{$TempleInfo->content}}</textarea>
                                     </div>
+                                    <p class="input-info"><span class="notice-icon"></span>已输入<span id="wordCount">7</span>字,最多325字(含签名),拆分为<span id="msgCount"></span>条短信</p>
                                     <p class="input-info"><span class="notice-icon"></span>已输入<span id="wordCount">7</span>字,最多325字(含签名),拆分为<span id="msgCount"></span>条短信</p>
                                     <p><a id="check-phone" class="btn-style">检查号码</a><a id="sendSms" class="btn-style">发送</a></p>
                                 </div>
@@ -303,6 +305,10 @@
         }).fail(function() {
             alert('文件上传失败！');
         });
+    });
+
+    $("#sendSms").on('click', function () {
+       $("#sendInfo").submit();
     });
 
 </script>
