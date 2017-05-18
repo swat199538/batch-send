@@ -26,8 +26,6 @@ class AssistantSubmitLog extends Model
             ['task_id', '=', $taskId]
         ])->first();
 
-//        dd($data);
-
         if ($data == null){
             return ['code'=>2];
         }
@@ -41,8 +39,26 @@ class AssistantSubmitLog extends Model
             return ['code'=>3];
         }
 
+    }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Model\category', 'category_id', 'id');
+    }
 
+    public function getLogInfoByuuid($uuid)
+    {
+        $info = $this->with('category')->where([['uuid', '=', $uuid]])->get();
+        if ($info->isEmpty()){
+            return null;
+        } else{
+            return $info->toArray();
+        }
+    }
+
+    public function getImpoerInfo($id, $uuid)
+    {
+        return $this->where([['id', '=', $id], ['uuid', '=', $uuid]])->first();
     }
 
 }

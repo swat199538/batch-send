@@ -18,15 +18,18 @@ class VerifySmsInfo
         //验证手机号码
         $phone = explode("\r\n", $request->input('numbers'));
 
+
         if (empty($phone)){
             return back()->withInput()->withErrors(['phoneError'=>'手机号不能为空']);
         }
 
-//        dd($phone);
+        if (count($phone) > 50000){
+            return back()->withInput()->withErrors(['phoneError'=>'手机号太多了']);
+        }
 
         foreach ($phone as $key=>$value){
             if (!preg_match('/^1[34578]{1}\d{9}$/', $value)){
-                echo "格式错误:".$key;
+                return back()->withInput()->withErrors(['signatureError'=>'格式错误']);
             }
         }
 

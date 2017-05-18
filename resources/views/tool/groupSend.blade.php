@@ -81,9 +81,9 @@
                                     <a href="{{url('/download/excel')}}" class="download">下载号码模版</a>
                                     <div id="receive-area" class="receive-area">
                                         <textarea name="numbers" id="phone-numbers" placeholder="每个号码以换行为分隔" id="receive-phone" class="receive-text"></textarea>
-                                        <p class="word-count"><span id="countWord">0</span>/100000</p>
+                                        <p class="word-count"><span id="countWord">0</span>/50000</p>
                                     </div>
-                                    <p class="input-info"><span class="notice-icon"></span>最多<span>100000</span>个(超出部分自动忽略，检查号码会自动格式)，成功<span id="success-count">0</span>个，<span id="repeat-count">0</span>个重复，<span id="error-count">0</span>个格式错误</p>
+                                    <p class="input-info"><span class="notice-icon"></span>最多<span>50000</span>个(超出部分自动忽略，输入检查会自动格式化)，成功<span id="success-count">0</span>个，<span id="repeat-count">0</span>个重复，<span id="error-count">0</span>个格式错误</p>
                                 </div>
                             </div>
 
@@ -101,8 +101,10 @@
                                         <textarea name="content" id="msg-content" style="text-indent:85px;line-height: 31px; " placeholder="请输入短信内容" class="receive-text">{{$TempleInfo->content}}</textarea>
                                     </div>
                                     <p class="input-info"><span class="notice-icon"></span>已输入<span id="wordCount">7</span>字,最多325字(含签名),拆分为<span id="msgCount"></span>条短信</p>
-                                    <p class="input-info"><span class="notice-icon"></span>已输入<span id="wordCount">7</span>字,最多325字(含签名),拆分为<span id="msgCount"></span>条短信</p>
-                                    <p><a id="check-phone" class="btn-style">检查号码</a><a id="sendSms" class="btn-style">发送</a></p>
+                                    <p class="input-info"><span class="notice-icon"></span>
+                                        <span id="chieck_info">输入检查成功后才可发送短信</span>
+                                    </p>
+                                    <p><a id="check-phone" class="btn-style">输入检查</a><a id="sendSms" class="btn-style disability">发送</a></p>
                                 </div>
                             </div>
 
@@ -256,12 +258,47 @@
     });
 
     $("#check-phone").on('click', function () {
+        //手机号码检查
        var numbers = $("#phone-numbers").val().split('\n');
        if (numbers.length <= 15000){
            checkPhone(numbers);
        } else {
            severCheckPhone(numbers);
        }
+
+       //检查签名
+        var signature = $("#signature").val();
+        var contet = $("#msg-content").val();
+
+        var checkSign
+        var checkLength
+
+        if((/[a-zA-Z\d\u4e00-\u9fa5]{3,7}/g.test(signature)) && signature!='请输入签名'){
+            checkSign = true;
+        } else {
+            checkSign = false;
+            $("#chieck_info").css('color', 'red');
+            $("#chieck_info").text('签名只能是中文数字字母3到8个字');
+        }
+
+        //检查内容长度
+        if (contet.length + signature.length + 2 <= 325 && contet.length > 0){
+            checkLength = true;
+        } else {
+            checkLength = false;
+            $("#chieck_info").css('color', 'red');
+            $("#chieck_info").text('短信内容长度325个字');
+        }
+
+        if (checkSign && checkLength){
+            $("#chieck_info").css('color', 'green');
+            $("#chieck_info").text('检查成功可以发送');
+            $("#sendSms").removeClass('disability');
+            $("#sendSms").on('click', function () {
+                $("#sendInfo").submit();
+            });
+        }
+
     });
 
     $("#importBtn").click(function () {
@@ -305,10 +342,6 @@
         }).fail(function() {
             alert('文件上传失败！');
         });
-    });
-
-    $("#sendSms").on('click', function () {
-       $("#sendInfo").submit();
     });
 
 </script>
