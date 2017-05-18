@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>营销短信群发</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/right_menu.css">
+    <link rel="stylesheet" type="text/css" href="css/tools2.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <div class="top-bar ">
+        <div class="webContainer">
+            <div class="top-box">
+                <ul class="contact-bar">
+                    <li class="tel last">400-716-3021</li>
+                </ul>
+                <ul id="current_member" class="user-bar" style="float:right">
+                    <li class="active first"><a title="短信宝用户登入" href="/login">登录</a></li>
+                    <li class="last"><a title="短信宝用户注册" href="/reg">注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="nav">
+        <div class="nav_main">
+            <div class="nav_main_div"><a title="短信宝短信平台" href="/"><img src="http://www.smsbao.com/images/logo.png" alt="短信宝短信平台"></a></div>
+            <ul class="nav_main_ul_one">
+                <li class="nav_item"><a title="短信宝首页" href="/">首 页</a></li>
+                <li class="nav_item show_column">
+                    <a href="javascript:void(0);">黑板报</a>
+                    <ul class="columnShow-inline" style="display: none; width: 100px; position: absolute; top: 60px; z-index: 200; overflow: hidden; border-top: none; border-right: 1px solid rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); border-left: 1px solid rgb(238, 238, 238); border-image: initial;">
+                        <li>
+                            <h3><a title="短信谁在用" href="/buzz" target="_blank">谁 在 用</a></h3>
+                        </li>
+                        <li>
+                            <h3><a title="干货分享" href="/application" target="_blank">干货分享</a></h3>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav_item"><a title="使用指南" href="/help" class="navCur">使用指南</a></li>
+                <li class="nav_item"><a title="短信接口" href="/openapi">短信接口</a></li>
+                <li class="nav_item"><a title="短信插件" href="/plugin">建站插件</a></li>
+                <!--<li class="nav_item"><a title="合作联盟" href="/joinin">合作联盟</a></li>-->
+                <li class="nav_item"><a title="短信价格查询" href="/fee">资费标准</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script>
+    //样式JS
+    $('.receive-text').on('focus', function () {
+        $(this).parent().addClass('focus');
+    });
+    $('.receive-text').on('blur', function () {
+        $(this).parent().removeClass('focus');
+    });
+
+    $("#signature-view").text($("#signature").val());
+    $("#content-view").text($("#msg-content").val());
+
+    function resetWidth($obj) {
+        var text = $obj.val().length;
+        var current = parseInt(text)*14;
+        if (current === 0){
+            current = 14;
+        } else if (current > 111){
+            current = 111
+        }
+        $obj.css('width', current+'px');
+        $("#msg-content").css('text-indent', current+14+'px');
+    }
+
+    function countWord()
+    {
+        var sign = $("#signature").val().length+2;
+        var content = $("#msg-content").val().length;
+        var wordCount = sign+content;
+        var msgCount = parseInt(wordCount / 64) + 1;
+        console.log(msgCount);
+//        console.log('字数:'+wordCount+'拆分条数:'+msgCount);
+        $("#msgCount").text(msgCount);
+        $("#wordCount").text(wordCount);
+    }
+    
+    $("#signature").on('focus', function () {
+       var info = $(this).val();
+       if (info == '请输入签名'){
+           $(this).val('');
+           resetWidth($(this));
+       }
+    });
+    $("#signature").on('keyup', function () {
+        var text = $(this).val();
+        if (text.length > 9){
+            text = text.substring(0, 8);
+            $(this).val(text);
+        }
+        resetWidth($(this));
+        countWord();
+    });
+    $("#signature").on('blur', function () {
+       var text = $(this).val();
+       if (text == ''){
+           $(this).val('请输入签名');
+           resetWidth($(this));
+       }
+       $("#signature-view").text($(this).val());
+    });
+
+    $("#msg-content").on('blur', function () {
+       $("#content-view").text($(this).val());
+        countWord();
+    });
+
+    $("#check-phone").on('click', function () {
+       var numbers = $("#phone-numbers").val().split(',');
+       var noRepeatNumber = [];
+       var trueNumers = [];
+       var error = 0;
+       var repeat = 0;
+        //去重
+        for (var i=0; i< numbers.length; i++){
+            if (noRepeatNumber.indexOf(numbers[i]) === -1){
+                noRepeatNumber.push(numbers[i]);
+            } else {
+                repeat ++;
+            }
+        }
+
+       //检查格式
+       for (var i in noRepeatNumber){
+           if((/^1[3|4|5|8][0-9]\d{4,8}$/.test(noRepeatNumber[i]))){
+               trueNumers.push(noRepeatNumber[i]);
+           } else {
+               error ++;
+           }
+       }
+
+       var trueDome = '';
+
+       for (var i in  trueNumers){
+           if (i != trueNumers.length -1){
+               trueDome += trueNumers[i]+',';
+           } else {
+               trueDome += trueNumers[i];
+           }
+       }
+        $("#phone-numbers").val(trueDome);
+        $("#success-count").text(trueNumers.length);
+        $("#error-count").text(error);
+        $("#repeat-count").text(repeat);
+
+    });
+
+</script>
+</body>
+</html>

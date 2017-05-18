@@ -58,37 +58,13 @@
                             </div>
                             <ul>
                                 @foreach($temple as $row)
-                                <li><div class="service">
-                                        <p class="service-main">
-                                            {{ $row->content }}
-                                        </p>
-                                        <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                    </div></li>
-                                    @endforeach
-                                    @foreach($temple as $row)
-                                        <li><div class="service">
-                                                <p class="service-main">
-                                                    {{ $row->content }}
-                                                </p>
-                                                <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                            </div></li>
-                                    @endforeach
-                                    @foreach($temple as $row)
-                                        <li><div class="service">
-                                                <p class="service-main">
-                                                    {{ $row->content }}
-                                                </p>
-                                                <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                            </div></li>
-                                    @endforeach
-                                    @foreach($temple as $row)
-                                        <li><div class="service">
-                                                <p class="service-main">
-                                                    {{ $row->content }}
-                                                </p>
-                                                <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                            </div></li>
-                                    @endforeach
+                                    <li><div class="service">
+                                            <p class="service-main">
+                                                {{ $row->content }}
+                                            </p>
+                                            <a href="/qunfa/{{ $row->id }}">一键发送</a>
+                                        </div></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -106,7 +82,7 @@
                         <span>热门短信TOP10</span>
                         <ul>
                             @foreach($topSms as $row)
-                            <li><a href="/qunfa/{{ $row->id }}">{{ $row->content }}</a></li>
+                                <li><a href="/qunfa/{{ $row->id }}">{{ $row->content }}</a></li>
                             @endforeach
                         </ul>
                     </div>

@@ -60,7 +60,7 @@
                             <input style="display: none;" name="file" type="file" id="excel_file">
                         </form>
                         <form id="sendInfo" action="{{url('/send')}} " method="post">
-                            <input type="hidden" name="id" value="{{$TempleInfo->id}}">
+                            <input type="hidden" name="id" value="{{$info['obj']->template_id}}">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <div class="group-sms">
                                 <div class="left">
@@ -80,7 +80,7 @@
                                     <a id="importBtn" class="btn-style">导入号码</a>
                                     <a href="{{url('/download/excel')}}" class="download">下载号码模版</a>
                                     <div id="receive-area" class="receive-area">
-                                        <textarea name="numbers" id="phone-numbers" placeholder="每个号码以换行为分隔" id="receive-phone" class="receive-text"></textarea>
+                                        <textarea name="numbers" id="phone-numbers" placeholder="每个号码以换行为分隔" id="receive-phone" class="receive-text">{!! $info['phone'] !!}</textarea>
                                         <p class="word-count"><span id="countWord">0</span>/50000</p>
                                     </div>
                                     <p class="input-info"><span class="notice-icon"></span>最多<span>50000</span>个(超出部分自动忽略，输入检查会自动格式化)，成功<span id="success-count">0</span>个，<span id="repeat-count">0</span>个重复，<span id="error-count">0</span>个格式错误</p>
@@ -95,10 +95,11 @@
                                     <div class="receive-area" style="position: relative">
                                         <div class="auto-graph">
                                             <span class="flt-1">[</span>
-                                            <input name="signature" id="signature" class="flt-1 auto-graph-input" value="请输入签名" type="text">
+                                            <input name="signature" id="signature" class="flt-1 auto-graph-input" value="{{$info['signature']}}" type="text">
                                             <span class="flt-1">]</span>
                                         </div>
-                                        <textarea name="content" id="msg-content" style="text-indent:85px;line-height: 31px; " placeholder="请输入短信内容" class="receive-text">{{$TempleInfo->content}}</textarea>
+                                        <textarea name="content" id="msg-content" style="text-indent:85px;line-height: 31px; " placeholder="请输入短信内容" class="receive-text">{{$info['content']}}
+                                        </textarea>
                                     </div>
                                     <p class="input-info"><span class="notice-icon"></span>已输入<span id="wordCount">7</span>字,最多325字(含签名),拆分为<span id="msgCount"></span>条短信</p>
                                     <p class="input-info"><span class="notice-icon"></span>
@@ -195,7 +196,7 @@
     {
         if (isAjax == 0){
             layer.msg('玩命检查中！',{
-               time:100000
+                time:100000
             });
             isAjax = 1;
             $.post(
@@ -226,13 +227,13 @@
             );
         }
     }
-    
+
     $("#signature").on('focus', function () {
-       var info = $(this).val();
-       if (info == '请输入签名'){
-           $(this).val('');
-           resetWidth($(this));
-       }
+        var info = $(this).val();
+        if (info == '请输入签名'){
+            $(this).val('');
+            resetWidth($(this));
+        }
     });
     $("#signature").on('keyup', function () {
         var text = $(this).val();
@@ -244,29 +245,29 @@
         countWord();
     });
     $("#signature").on('blur', function () {
-       var text = $(this).val();
-       if (text == ''){
-           $(this).val('请输入签名');
-           resetWidth($(this));
-       }
-       $("#signature-view").text($(this).val());
+        var text = $(this).val();
+        if (text == ''){
+            $(this).val('请输入签名');
+            resetWidth($(this));
+        }
+        $("#signature-view").text($(this).val());
     });
 
     $("#msg-content").on('blur', function () {
-       $("#content-view").text($(this).val());
+        $("#content-view").text($(this).val());
         countWord();
     });
 
     $("#check-phone").on('click', function () {
         //手机号码检查
-       var numbers = $("#phone-numbers").val().split('\n');
-       if (numbers.length <= 15000){
-           checkPhone(numbers);
-       } else {
-           severCheckPhone(numbers);
-       }
+        var numbers = $("#phone-numbers").val().split('\n');
+        if (numbers.length <= 15000){
+            checkPhone(numbers);
+        } else {
+            severCheckPhone(numbers);
+        }
 
-       //检查签名
+        //检查签名
         var signature = $("#signature").val();
         var contet = $("#msg-content").val();
 

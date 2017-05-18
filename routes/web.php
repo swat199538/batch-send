@@ -33,19 +33,18 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
         );
     });
 
-    Route::get('/test2', function (){
-       $a = (object)[
-           'a'=>'123',
-           'b'=>311
-       ];
-       echo $a->a;
-    });
+    //查看发送记录
+    Route::get('/send-log', 'IndexController@log');
 
     //AJAX检查手机号码格式
     Route::post('/check/phone', 'ExcelController@checkPhone');
 
     //获取短信
     Route::get('/assistant/{uuid}/{taskId}/{token}', 'IndexController@getGroupSms');
+
+    //导入历史发送记录
+    Route::get('/import/{id}', 'IndexController@import');
+
 });
 
 Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){
