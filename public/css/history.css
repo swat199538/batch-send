@@ -1,0 +1,24 @@
+body{font:12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;}
+#content {width:1210px;margin:0 auto;}
+#content .title{padding:10px;background:#F5F5F5;}
+#content .title h3{padding:5px 10px;margin:0px;color:#000;font-size:14px;}
+#content .main {margin-top:20px;min-height:1000px;background:#F5F5F5;padding:25px;}
+#content .main-log{width:100%;border-collapse:collapse;}
+#content .main-log thead tr{background:#fff;line-height:34px;}
+#content .main-log thead tr h3{width:190px;font-size:14px;margin:0px;color:#666;}
+#content .main-log thead tr th .main-l{width:150px;font-size:14px;float:left;color:#666;}
+#content .main-log thead tr th .main-r{width:150px;font-size:14px;float:left;color:#666;margin-left:85px;}
+#content .main-log tbody .sep-row{height:20px;}
+#content .main-log tbody .tr-th{background:#c5c5c5;height:31px;line-height:31px;color:#fff;overflow:hidden;font-weight:bolder;}
+#content .main-log tbody .tr-th td{border:1px solid #e5e5e5;}
+#content .main-log tbody .tr-th td span{float:left;height:18px;line-height:18px;padding:2px 0 0;}
+#content .main-log tbody .tr-th td .gap{width:14px;}
+#content .main-log tbody .tr-bd{text-align:center;vertical-align:top;}
+#content .main-log tbody .tr-bd td{padding:14px 0;border:1px solid #e5e5e5;}
+#content .main-log tbody .tr-bd td .goods-item{width:340px;margin-right:74px;display:block;float:left;}
+#content .main-log tbody .tr-bd td .goods-number{width:70px;float:left;text-align:left;color:#aaa;font-family:verdana;}
+#content .main-log tbody .tr-bd td .goods-item .p-img{float:left;width:60px;height:60px;border:1px solid #efefef;margin:0 14px;overflow:hidden;}
+#content .main-log tbody .tr-bd td .goods-item .p-msg{height:55px;line-height:25px;overflow:hidden;color:#333;text-align:left;}
+#content .main-log tbody .tr-bd td .tooltip{position:relative;width:100px;margin:0 auto;z-index:2;cursor:pointer;color:#aaa;}
+#content .main-log tbody .tr-bd td .again{text-decoration: none;display:block;padding:5px;border:2px solid #fff;width:90px;margin:0 auto;color:#fff;background:#a5a5a5;font-weight:bolder;}
+#content .main-log tbody .tr-bd td .again:hover{background:#c9cfc2;}
