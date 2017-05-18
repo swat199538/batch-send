@@ -170,16 +170,16 @@
                             <div class="form-group">
                                 <label for="name">助手状态</label>
                                 <select class="form-control" name="status">
-                                    <option value="普通" @if(isset($dataTypeContent->status) && $dataTypeContent->status == '普通'){{ 'selected="selected"' }}@endif>普通</option>
-                                    <option value="热门" @if(isset($dataTypeContent->status) && $dataTypeContent->status == '热门'){{ 'selected="selected"' }}@endif>热门</option>
-                                    <option value="下架" @if(isset($dataTypeContent->status) && $dataTypeContent->status == '下架'){{ 'selected="selected"' }}@endif>下架</option>
+                                    <option value="0" @if(isset($dataTypeContent->status) && $dataTypeContent->status == '0'){{ 'selected="selected"' }}@endif>普通</option>
+                                    <option value="1" @if(isset($dataTypeContent->status) && $dataTypeContent->status == '1'){{ 'selected="selected"' }}@endif>热门</option>
+                                    <option value="2" @if(isset($dataTypeContent->status) && $dataTypeContent->status == '2'){{ 'selected="selected"' }}@endif>下架</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="name">工具分类</label>
-                                <select class="form-control" name="category_id">
+                                <select class="form-control" name="categories_id">
                                     @foreach(TCG\Voyager\Models\Category::all() as $category)
-                                        <option value="{{ $category->id }}" @if(isset($dataTypeContent->category_id) && $dataTypeContent->category_id == $category->id){{ 'selected="selected"' }}@endif>{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if(isset($dataTypeContent->categories_id) && $dataTypeContent->categories_id == $category->id){{ 'selected="selected"' }}@endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

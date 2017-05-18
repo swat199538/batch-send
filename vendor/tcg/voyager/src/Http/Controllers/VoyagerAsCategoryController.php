@@ -37,7 +37,7 @@ class VoyagerAsCategoryController extends VoyagerBreadController
         if (view()->exists("voyager::$slug.read")) {
             $view = "voyager::$slug.read";
         }
-        $category_id = $dataTypeContent['attributes']['category_id'];
+        $category_id = $dataTypeContent['attributes']['categories_id'];
         $category = Voyager::model('Category')->where('id', '=', $category_id)->select('name')->get();
         $category = $this->object2array($category);
         $category_name = $category['0']['attributes']['name'];
