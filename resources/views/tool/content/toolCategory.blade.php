@@ -1,7 +1,7 @@
 @extends('tool.master')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/service.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/toolCategory.css') }}">
 @stop
 
 @section('content')
@@ -29,7 +29,7 @@
         <!--服务导航开始-->
         <div class="services-nav">
             <div class="about_site">
-                你的位置：<a href="">短信宝</a>><a href="">短信服务</a>
+                你的位置：<a href="">短信宝</a>><a href="">助手导航</a>
             </div>
         </div>
         <!--服务导航结束-->
@@ -50,46 +50,27 @@
                     <!--</div>-->
 
                     <div class="services-show-k">
-                        <div class="services-show-s">
-                            <div class="services-title">
-                                <div id="date"></div>
-                                <h3>{{$category->name}}模板</h3>
-                                <a href="">more</a>
+                        <div class="services-show-c">
+                            <div class="services-show-c-t">
+                                <div class="services-show-c-i">
+                                    <img src="http://localhost/storage/as_category/May2017/56HFPdQj1v3qVhAPDuht.png">
+                                </div>
                             </div>
-                            <ul>
-                                @foreach($temple as $row)
-                                <li><div class="service">
-                                        <p class="service-main">
-                                            {{ $row->content }}
-                                        </p>
-                                        <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                    </div></li>
-                                    @endforeach
-                                    @foreach($temple as $row)
-                                        <li><div class="service">
-                                                <p class="service-main">
-                                                    {{ $row->content }}
-                                                </p>
-                                                <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                            </div></li>
-                                    @endforeach
-                                    @foreach($temple as $row)
-                                        <li><div class="service">
-                                                <p class="service-main">
-                                                    {{ $row->content }}
-                                                </p>
-                                                <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                            </div></li>
-                                    @endforeach
-                                    @foreach($temple as $row)
-                                        <li><div class="service">
-                                                <p class="service-main">
-                                                    {{ $row->content }}
-                                                </p>
-                                                <a href="/qunfa/{{ $row->id }}">一键发送</a>
-                                            </div></li>
-                                    @endforeach
-                            </ul>
+                        </div>
+                        <div class="services-show-c">
+
+                        </div>
+                        <div class="services-show-c">
+
+                        </div>
+                        <div class="services-show-c">
+
+                        </div>
+                        <div class="services-show-c">
+
+                        </div>
+                        <div class="services-show-c">
+
                         </div>
                     </div>
                 </div>
@@ -98,7 +79,7 @@
                         <span>热门助手TOP5</span>
                         <ul>
                             @foreach($topTool as $row)
-                            <li><a href="/smstool/{{ $row->id }}"><i><img src="{{ Voyager::image( $row->image ) }}" style="height:24px;"></i><h2>{{$row->name}}</h2></a></li>
+                                <li><a href="/smstool/{{ $row->id }}"><i><img src="{{ Voyager::image( $row->image ) }}" style="height:24px;"></i><h2>{{$row->name}}</h2></a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -106,7 +87,7 @@
                         <span>热门短信TOP10</span>
                         <ul>
                             @foreach($topSms as $row)
-                            <li><a href="/qunfa/{{ $row->id }}">{{ $row->content }}</a></li>
+                                <li><a href="/qunfa/{{ $row->id }}">{{ $row->content }}</a></li>
                             @endforeach
                         </ul>
                     </div>

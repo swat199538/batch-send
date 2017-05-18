@@ -40,7 +40,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav_item"><a title="使用指南" href="/help" class="navCur">使用指南</a></li>
+                <li class="nav_item"><a title="使用指南" href="/help">使用指南</a></li>
                 <li class="nav_item"><a title="短信接口" href="/openapi">短信接口</a></li>
                 <li class="nav_item"><a title="短信插件" href="/plugin">建站插件</a></li>
                 <!--<li class="nav_item"><a title="合作联盟" href="/joinin">合作联盟</a></li>-->

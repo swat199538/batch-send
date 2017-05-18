@@ -89,15 +89,23 @@ class MakeFacadeCommand extends Command
     {
         $templates = $this->templateStub();
         $class = null;
+        foreach($templates as $key =>$template){
+            $class = $this->files->put($this->getPath($key),$template);
+        }
+        return $class;
     }
 
     private function templateStub()
     {
         //获取facade的模板
-        $stub = $this->getStub();
+        $stubs = $this->getStub();
         // 获取需要替换的模板中的变量
         $templateData = $this->getTemplateData();
         $renderStubs = [];
+        foreach($stubs as $key => $stub){
+            $renderStubs[$key] = $this->getRenderStub($templateData,$stub);
+        }
+        return $renderStubs;
     }
 
     private function getStub()
@@ -110,20 +118,37 @@ class MakeFacadeCommand extends Command
 
     private function getTemplateData()
     {
-        $Namespace          = Config::get('facade.facates_namespace');
+        $facadeNamespace          = Config::get('facade.facates_namespace');
         $modelNamespace     = 'App\\'.$this->getModelName();
         $className                    = $this->getFacadeName();
         $modelName                    = $this->getModelName();
+
+        $templateVar = [
+            'facade_namespace' =>$facadeNamespace,
+            'model_namespace'=>$modelNamespace,
+            'class_name' => $className,
+            'model_name' => $modelName,
+        ];
+
+        return $templateVar;
+    }
+
+    private function getRenderStub($templateData,$stub)
+    {
+        foreach($templateData as $search => $replace){
+            $stub = str_replace('$'.$search,$replace,$stub);
+        }
+        return $stub;
     }
 
     private function getFacadeName()
     {
         // 根据输入的facade变量参数,是否需要加上'Facade'
         $facadeName = $this->getFacade();
-        if((strlen($repositoryName) < strlen('Repository')) || strrpos($repositoryName, 'Repository', -11)){
-            $repositoryName .= 'Repository';
+        if((strlen($facadeName) < strlen('Facade')) || strrpos($facadeName, 'Facade', -11)){
+            $facadeName .= 'Facade';
         }
-        return $repositoryName;
+        return $facadeName;
     }
 
     private function getModelName()
