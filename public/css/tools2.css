@@ -1,5 +1,5 @@
 .tool-wrapper{
-    width: 1600px;
+    width: 1000px;
     margin: 0 auto;
 }
 
@@ -12,24 +12,23 @@
 
 .tool-box > .sms-content{
     float: left;
-    width: 60%;
+    width: 35%;
     height: 100%;
     margin-top: 15px;
     margin-left: 15px;
 }
 .group-sms{
     margin-top: 15px;
-    width: 900px;
+    width: 350px;
     overflow: hidden;
 }
 .group-sms > .left{
     float: left;
-    width: 15%;
+    width: 8%;
     padding-top: 5px;
 }
-.left > .title{
-    color: #5b5d63;
-    font-size: 18px;
+.title{
+    padding-left: 15px;
 }
 
 .group-sms > .right{
@@ -39,7 +38,7 @@
 .receive-area{
     margin-left: 15px;
     margin-top: 15px;
-    width: 710px;
+    width: 300px;
     height: 210px;
     border: solid 1px #75878b;
     border-radius: 5px;
@@ -61,7 +60,7 @@
     background: url(../img/pro-icon1.png) -10px -705px no-repeat;
 }
 .receive-text{
-    width: 700px;
+    width: 291px;
     height: 185px;
     border: none;
     resize: none;
@@ -119,13 +118,14 @@
 
 .sms-preview{
     float: right;
-    width: 35%;
+    width: 60%;
 }
 .preview-wrapper{
-    margin-top: 150px;
-    margin-left: 100px;
+    margin: 25px auto;
+    width: 200px;
 }
 .img-model{
+    margin: 0 auto;
     width: 200px;
     height: 378px;
     position: relative;
@@ -172,4 +172,110 @@
     background-color: #7b8981 !important;
     color: #aeaeaa !important;
     cursor: none !important;
+}
+
+/****************************************二次修改添加********************************************/
+.more-template{
+    width: 550px;
+    border: solid 1px silver;
+    margin-top: 65px;
+}
+.template-title{
+    margin-top: 15px;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 1.08em;
+}
+.template-category{
+    margin-left: 15px;
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+    border-bottom: solid 1px silver;
+    padding-bottom: 5px;
+    width: 510px;
+}
+.template-content{
+    margin-left: 15px;
+    /*margin-top: 15px;*/
+    width: 510px;
+}
+.template-table tr{
+    border-bottom: solid 1px silver;
+}
+.template-table td{
+    padding-bottom: 5px;
+    padding-top: 15px;
+}
+
+.tfl{
+    float: left;
+    width: 460px;
+}
+.tfr{
+    float: right;
+    width: 50px;
+    color: #4bc760;
+    cursor: pointer;
+}
+
+.template-paging{
+    margin-left: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.page-button{
+    border: 1px solid #e7ecf0;
+    font-weight: normal;
+    cursor: pointer;
+    margin: 0 2px;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+.current-category{
+    background-color: #03a1eb;
+    color: #ffffff;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+/********************历史发送记录**********************/
+.tool-box2 > h3{
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 600;
+    width: 150px;
+}
+table.gridtable {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+}
+table.gridtable th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+table.gridtable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+}
+.tool-box2 {
+    margin-top: 15px;
+    width: 100%;
+    border-top: solid 1px #6e879a;
+    border-left: solid 1px #6e879a;
+    border-right: solid 1px #6e879a;
 }
