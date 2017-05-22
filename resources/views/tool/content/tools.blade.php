@@ -54,8 +54,10 @@
                             <div class="services-title">
                                 <div id="date"></div>
                                 <h3>{{$category->name}}模板</h3>
-                                <a href="">more</a>
                             </div>
+                            @if (count($temple)==0)
+                                <h3>没有搜索到你所需要的内容。</h3>
+                            @endif
                             <ul>
                                 @foreach($temple as $row)
                                     <li><div class="service">
@@ -66,10 +68,23 @@
                                         </div></li>
                                 @endforeach
                             </ul>
+                            <?php echo $temple->render(); ?>
                         </div>
                     </div>
                 </div>
                 <div class="service-right">
+                    <div class="search">
+                        <form role="search" action="{{ route('mysearch') }} " method="get">
+                            <input class="ss" name="search" type="text" placeholder="输入你要搜索的内容"><a class="buttom"></a>
+                        </form>
+                        @if(isset($category->hot_tags))
+                        <h3>热门标签:</h3>
+                            @php
+                                $hot_tag = explode("，",$category->hot_tags);
+                            @endphp
+                                @foreach($hot_tag as $tag)<a href="/smstool?search={{$tag}}" class="tag">{{$tag}}</a>@endforeach
+                            @endif
+                    </div>
                     <div class="groom">
                         <span>热门助手TOP5</span>
                         <ul>
@@ -79,17 +94,77 @@
                         </ul>
                     </div>
                     <div class="hot">
-                        <span>热门短信TOP10</span>
-                        <ul>
-                            @foreach($topSms as $row)
-                                <li><a href="/qunfa/{{ $row->id }}">{{ $row->content }}</a></li>
-                            @endforeach
-                        </ul>
+                        <span>为你推荐</span>
+                        <div class="phone">
+                            <div class="mask">
+                                <ul>
+                                    @foreach($topSms as $row)
+                                    <li><a href="/qunfa/{{ $row->id }}">【短信签名】{{ $row->content }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="category">
+                <ul>
+                    @foreach($tool as $row)
+                        <li><a href="/smstool/{{ $row->id }}"><i><img src="{{ Voyager::image( $row->image ) }}" style="height:60px;"></i><h3>{{$row->name}}</h3></a></li>
+                    @endforeach
+                </ul>
             </div>
         </div>
         <!--主体内容结束-->
 
     </div>
+@stop
+
+@section('js')
+    <script>
+    $(function(){
+        var t =4000//定义循环时间
+        var num = $(".mask ul li").size();
+        $(".mask ul li:first").addClass('show');
+        function action(cl){
+            var i = '.'
+            i += cl;
+            var object = $(i);
+            realize(object);
+        }
+        //实现效果
+        function realize(object){
+            var show = object.children("ul").children(".show")
+            setTimeout(function () {
+                show.fadeOut("slow",function(){
+                    $(this).removeClass();
+                    var display = next(show);
+                    display.fadeIn("fast",function(){
+                        $(this).addClass('show');
+                        action('mask');
+                    });
+                });
+            }, t);
+        }
+        //获取下个一个
+        function next(show){
+            var next = show.next();
+            if(next.length == 1){
+                return next;
+            }else{
+                var ol = show.prevAll("li:first");
+                return ol;
+            }
+        }
+
+        $(".buttom").click(function(){
+            $(".search form").submit();
+        })
+
+        if(num > 1){
+        action('mask');
+        }
+    })
+
+    </script>
 @stop
