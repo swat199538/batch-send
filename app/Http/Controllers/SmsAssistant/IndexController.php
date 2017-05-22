@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SmsAssistant;
 use App\Http\Controllers\Controller;
 use App\Model\AssistantSubmitLog;
 use App\Model\assistantTemple;
+use App\Model\category;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -22,14 +23,21 @@ class IndexController extends Controller
     }
 
     //短信群发页面
-    public function index(assistantTemple $assistantTemple, $id)
+    public function index(AssistantSubmitLog $assistantSubmitLog,assistantTemple $assistantTemple, category $category,$id)
     {
         $TempleInfo = $assistantTemple->getTempleById($id);
         if ($TempleInfo == null){
             return '没有此模版';
         }
+        $info = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
+        $template = $assistantTemple->getTempleByCategory($TempleInfo->category_id, 1);
         $assistantTemple->increment('click_count');
-        return view('tool.groupSend')->with(['TempleInfo'=>$TempleInfo]);
+        return view('tool.groupSend')->with([
+            'TempleInfo'=>$TempleInfo,
+            'template'=>$template,
+            'category'=>$category->all()->toArray(),
+            'info'=>$info
+        ]);
     }
 
 
@@ -69,7 +77,7 @@ class IndexController extends Controller
         return view('tool.content.log')->with(['info'=>$info]);
     }
 
-    public function import($id, AssistantSubmitLog $assistantSubmitLog)
+    public function import($id, AssistantSubmitLog $assistantSubmitLog, assistantTemple $assistantTemple, category $category)
     {
         $info = $assistantSubmitLog->getImpoerInfo($id, $this->uuid);
         if (!$info == null){
@@ -79,7 +87,6 @@ class IndexController extends Controller
             preg_match('/】(?<content>.*)$/', $content, $content);
             $signature = $signature['signature'];
             $content = $content['content'];
-
             //整理号码
             $phones = json_decode($info->phone, true);
             $number = '';
@@ -93,11 +100,27 @@ class IndexController extends Controller
                 'obj'=>$info
             ];
 
-            return view('tool.importSend')->with(['info'=>$data]);
+            $template = $assistantTemple->getTempleByCategory($data['obj']->category_id, 1);
+            $info2 = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
+//            dd($info2);
+            return view('tool.importSend')->with([
+                'TempleInfo'=>$data,
+                'template'=>$template,
+                'category'=>$category->all()->toArray(),
+                'info'=>$info2
+            ]);
 
         } else{
             back();
         }
+    }
+
+    public function getTemplateByCategory(Request $request, assistantTemple $assistantTemple)
+    {
+        $category = $request->input('category');
+        $page = $request->input('current');
+        $response = $assistantTemple->getTempleByCategory($category, $page);
+        return json_encode($response);
     }
 
 }

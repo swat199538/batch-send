@@ -45,6 +45,9 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
     //导入历史发送记录
     Route::get('/import/{id}', 'IndexController@import');
 
+    //Ajax获取新的分类
+    Route::post('/ajax/category', 'IndexController@getTemplateByCategory');
+
 });
 
 Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){
