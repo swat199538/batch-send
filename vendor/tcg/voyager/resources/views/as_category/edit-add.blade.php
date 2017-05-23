@@ -95,10 +95,10 @@
                         </div>
                         <div class="panel-body">
                             @include('voyager::multilingual.input-hidden', [
-                                '_field_name'  => 'title',
-                                '_field_trans' => get_field_translations($dataTypeContent, 'title')
+                                '_field_name'  => 'name',
+                                '_field_trans' => get_field_translations($dataTypeContent, 'name')
                             ])
-                            <input type="text" class="form-control" id="slug" name="name" placeholder="助手名称" value="@if(isset($dataTypeContent->title)){{ $dataTypeContent->title }}@endif">
+                            <input type="text" class="form-control" id="slug" name="name" placeholder="助手名称" value="@if(isset($dataTypeContent->name)){{ $dataTypeContent->name }}@endif">
                         </div>
                     </div>
 
@@ -150,22 +150,29 @@
                                 ])
                                 <input type="text" class="form-control" id="slug" name="price"
                                        placeholder="0.00"
-                                       {{!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "slug") !!}}
-                                       value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@endif">
+                                       {{!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "price") !!}}
+                                       value="@if(isset($dataTypeContent->price)){{ $dataTypeContent->price }}@endif">
                             </div>
                             <div class="form-group">
                                 <label for="name">排序</label>
                                 <input type="text" class="form-control" id="slug" name="order"
                                        placeholder="0"
-                                       {{!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "slug") !!}}
-                                       value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@endif">
+                                       {{!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "order") !!}}
+                                       value="@if(isset($dataTypeContent->order)){{ $dataTypeContent->order }}@endif">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">热门标签(多个用逗号分割)</label>
+                                <input type="text" class="form-control" id="slug" name="hot_tags"
+                                       placeholder=""
+                                       {{!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "hot_tags") !!}}
+                                       value="@if(isset($dataTypeContent->hot_tags)){{ $dataTypeContent->hot_tags }}@endif">
                             </div>
                             <div class="form-group">
                                 <label for="name">用户点击数</label>
                                 <input type="text" class="form-control" id="slug" name="click_count"
                                        placeholder="0"
-                                       {{!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "slug") !!}}
-                                       value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@else 0 @endif">
+                                       {{!! isFieldSlugAutoGenerator($dataType, $dataTypeContent, "click_count") !!}}
+                                       value="@if(isset($dataTypeContent->click_count)){{ $dataTypeContent->click_count }}@else 0 @endif">
                             </div>
                             <div class="form-group">
                                 <label for="name">助手状态</label>
@@ -183,6 +190,7 @@
                                     @endforeach
                                 </select>
                             </div>
+
                             {{--<div class="form-group">--}}
                             {{--<label for="name">Featured</label>--}}
                             {{--<input type="checkbox" name="featured" @if(isset($dataTypeContent->featured) && $dataTypeContent->featured){{ 'checked="checked"' }}@endif>--}}

@@ -131,6 +131,14 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="name">tag标签</label>
+                                @include('voyager::multilingual.input-hidden', [
+                                    '_field_name'  => 'tag',
+                                    '_field_trans' => get_field_translations($dataTypeContent, 'tag')
+                                ])
+                                <textarea class="form-control" name="tag">@if(isset($dataTypeContent->tag)){{ $dataTypeContent->tag }}@endif</textarea>
+                            </div>
                             {{--<div class="form-group">--}}
                             {{--<label for="name">Featured</label>--}}
                             {{--<input type="checkbox" name="featured" @if(isset($dataTypeContent->featured) && $dataTypeContent->featured){{ 'checked="checked"' }}@endif>--}}

@@ -51,9 +51,10 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
 });
 
 Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){
-    Route::get('/','IndexController@show');
+    Route::get('/','IndexController@index')->name('mysearch');;
     Route::get('/{cid}','IndexController@index');
 });
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
