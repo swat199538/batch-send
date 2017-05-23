@@ -152,7 +152,7 @@
                                     <td>{{$value['created_at']}}</td>
                                     <td>{{count(json_decode($value['phone'], true))}}个号码</td>
                                     <td>￥{{count(json_decode($value['phone'], true))*$value['category']['price']}}</td>
-                                    <td style="cursor: pointer;">再次发送</td>
+                                    <td style="cursor: pointer;"><a href="{{url('/import', ['id'=>$value['id']])}}">再次发送</a></td>
                                 </tr>
                             @endforeach
                         @endif
@@ -353,6 +353,7 @@
            var smsContent = $("#sms-"+id).text();
            $("#msg-content").val(smsContent);
            $("#tid").val(id);
+           checkContent();
         });
     }
 
@@ -360,27 +361,124 @@
 
     //发送
     $("#sendSms").on('click', function () {
+        layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
         var signature = $("#signature").val();
         var content = $("#msg-content").val();
-        layer.open({
-            type: 1,
-            area: ['450px', '610px'], //宽高
-            content:
-            '<div class="preview-wrapper">'+
-            '<div class="img-model">'+
-            '<div class="bubble">'+
-            '<div class="talk">【<span id="signature-view">'+signature+'</span>】<span id="content-view">'+content+'</span></div>'+
-            '</div>'+
-            '</div>'+
-            '<p class="preview-info">内容预览</p>'+
-            '<p id="submitSms" style="margin-left: 46px; cursor:pointer;"  class="btn-style">确认发送</p>'+
-            '</div>'
-        });
 
-        $("#submitSms").on('click', function () {
-            $("#sendInfo").submit();
-        });
+        if (checkPhone() && checkSignature() && checkContent()){
+            layer.closeAll();
+            layer.open({
+                type: 1,
+                area: ['450px', '610px'], //宽高
+                content:
+                '<div class="preview-wrapper">'+
+                '<div class="img-model">'+
+                '<div class="bubble">'+
+                '<div class="talk">【<span id="signature-view">'+signature+'</span>】<span id="content-view">'+content+'</span></div>'+
+                '</div>'+
+                '</div>'+
+                '<p class="preview-info">内容预览</p>'+
+                '<p id="submitSms" style="margin-left: 46px; cursor:pointer;"  class="btn-style">确认发送</p>'+
+                '</div>'
+            });
+            $("#submitSms").on('click', function () {
+                $("#sendInfo").submit();
+            });
+        }
+    });
 
+
+    function checkPhone()
+    {
+        var numbers = $("#phone-numbers").val().split('\n');
+        var trueNumers = [];
+        var error = 0;
+        var repeat = 0;
+        //去重和检查格式
+        for (var i=0; i< numbers.length; i++){
+            if (trueNumers.indexOf(numbers[i]) === -1){
+                if((/^1[34578]{1}\d{9}$/.test(numbers[i]))){
+                    trueNumers.push(numbers[i]);
+                } else {
+                    error ++;
+                }
+            } else {
+                repeat ++;
+            }
+        }
+        if (trueNumers.length <= 0){
+            layer.closeAll();
+            layer.msg('请输入至少一个正确的手机号码');
+            return false;
+        }
+        var trueDome = '';
+        for (var i in  trueNumers){
+            trueDome += trueNumers[i]+'\n';
+        }
+        $("#phone-numbers").val(trueDome);
+        $("#countWord").text(trueNumers.length);
+        return true;
+    }
+    
+    function checkSignature()
+    {
+        //检查签名
+        countWord();
+        var signature = $("#signature").val();
+        if((/[a-zA-Z\d\u4e00-\u9fa5]{3,7}/g.test(signature)) && signature!='请输入签名'){
+            return true;
+        }else {
+            layer.closeAll();
+            layer.msg('签名只能是中文数字字母3到8个字');
+            return false;
+        }
+    }
+
+    function checkContent()
+    {
+        var contet = $("#msg-content").val();
+        var signature = $("#signature").val();
+        countWord();
+        //检查内容长度
+        if (contet.length + signature.length + 2 <= 325 && contet.length > 0){
+            return true;
+        } else {
+            layer.closeAll();
+            layer.msg('短信内容长度325个字(包含签名)');
+            return false;
+        }
+
+    }
+
+    function countWord()
+    {
+        var sign = $("#signature").val().length+2;
+        var content = $("#msg-content").val().length;
+        var wordCount = sign+content;
+        var msgCount = parseInt(wordCount / 64) + 1;
+        $("#msgCount").text(msgCount);
+        $("#wordCount").text(wordCount);
+    }
+
+    $("#phone-numbers,#signature,#msg-content").on('blur', function () {
+       var id = $(this).attr('id');
+       switch (id){
+           case 'phone-numbers':
+               checkPhone();
+               break
+           case 'signature':
+               checkSignature();
+               break
+           case 'msg-content':
+               checkContent();
+               break
+       }
+    });
+
+    $(document).ready(function () {
+        countWord();
     });
 
 </script>
