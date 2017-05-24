@@ -28,7 +28,7 @@
     </div>
     <div id="nav">
         <div class="nav_main">
-            <div class="nav_main_div"><a title="短信宝短信平台" href="/"><img src="http://www.smsbao.com/images/logo.png" alt="短信宝短信平台"></a></div>
+            <div class="nav_main_div"><a title="短信宝短信平台" href="http://twww.smsbao.com/"><img src="http://www.smsbao.com/images/logo.png" alt="短信宝短信平台"></a></div>
             <ul class="nav_main_ul_one">
                 <li class="nav_item"><a title="短信宝首页" href="http://twww.smsbao.com/">首 页</a></li>
                 {{--<li class="nav_item show_column">
