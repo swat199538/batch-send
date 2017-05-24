@@ -384,6 +384,7 @@
                 '</div>'
             });
             $("#submitSms").on('click', function () {
+                layer.load(0, {shade: false});
                 $("#sendInfo").submit();
             });
         }
