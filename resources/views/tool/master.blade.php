@@ -146,15 +146,15 @@
     <script>
         function response(words){
             if(words == 'error'){
-                console.log('你好');
+                console.log('用户未登入');
             }else{
                 document.cookie="username="+words;
                 login(words);
             }
         }
         function login(words){
-            $(".first").html('<a href="http://www.smsbao.com/member/index.jhtml">'+words+'</a>')
-            $(".last").html('<a href="http://www.smsbao.com/logout.jhtml">退出</a>')
+            $(".first").html('<a href="http://twww.smsbao.com/member/index.jhtml">'+words+'</a>')
+            $("#current_member .last").html('<a href="http://twww.smsbao.com/logout.jhtml">退出</a>')
         }
         </script>
     <script src="http://twww.smsbao.com/service.php?callback=response"></script>

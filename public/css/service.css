@@ -64,8 +64,10 @@ html{background-color: #ffffff !important;}
 .services-content .sitecon .services-show-s ul {height:804px;}
 .services-content .sitecon .services-show-s ul li{width:33%;float:left;min-height:200px;}
 .services-content .sitecon .services-show-s .pagination{width:auto;height:33px;display: inline-block;margin:0 auto;float:right;}
-.services-content .sitecon .services-show-s .pagination li{width:30px;display:block;min-height:24px;font-size:18px;border:2px solid #fff;text-align:center;}
-.services-content .sitecon .services-show-s .pagination li a{display:block;color:#bdbdbd;}
+.services-content .sitecon .services-show-s .pagination li:first-child{width:50px;}
+.services-content .sitecon .services-show-s .pagination li:last-child{width:50px;}
+.services-content .sitecon .services-show-s .pagination li{width:30px;display:block;min-height:24px;font-size:14px;border:2px solid #fff;text-align:center;color:#ccc;}
+.services-content .sitecon .services-show-s .pagination li a{display:block;color:#512a2a;}
 .services-content .sitecon .services-show-s .pagination li .disabled{color:#aaa7a7;}
 .services-content .sitecon .services-show-s .pagination li .active{color:#aaa7a7;}
 .services-content .sitecon .services-show-s .service{margin:15px 15px 0px 15px;height:160px;border:2px solid #cecece;border-radius:7px;background:#efefef;}
@@ -105,5 +107,8 @@ html{background-color: #ffffff !important;}
 .services-content .service-right .search h3{font-weight:bolder;color:#6a962c;}
 .services-content .service-right .search .tag{margin-right:20px;margin-top:3px;color:#444;}
 .services-content .service-right .search .tag:hover{color:#6a962c;cursor:pointer;}
+.services-content .category ul{overflow:hidden;}
+.pagination .disabled{color:#eee;}
+.wrapper .footer{display:none;}
 
 
