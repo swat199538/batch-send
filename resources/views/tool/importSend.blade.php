@@ -20,8 +20,7 @@
                     <li class="tel last">400-716-3021</li>
                 </ul>
                 <ul id="current_member" class="user-bar" style="float:right">
-                    <li class="active first"><a title="短信宝用户登入" href="/login">登录</a></li>
-                    <li class="last"><a title="短信宝用户注册" href="/reg">注册</a></li>
+
                 </ul>
             </div>
         </div>
@@ -520,7 +519,20 @@
         alertUnsent(unsentDom);
     });
 
-
+    function response(data)
+    {
+        if(data == 'error'){
+            $("#current_member").append(
+                '<li class="active first"><a title="短信宝用户登入" href="http://twww.smsbao.com/login">登录</a></li>'+
+                '<li class="last"><a title="短信宝用户注册" href="http://twww.smsbao.com/reg">注册</a></li>');
+        } else {
+            $("#current_member").append(
+                '<li class="active first"><a href="http://twww.smsbao.com/member/index.jhtml">swat199538</a></li>'+
+                '<li class="last"><a href="http://twww.smsbao.com/logout.jhtml">退出</a></li>'
+            );
+        }
+    }
 </script>
+<script src="http://twww.smsbao.com/service.php?callback=response"></script>
 </body>
 </html>
