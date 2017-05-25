@@ -94,8 +94,7 @@ function severCheckPhone(number)
                     layer.closeAll();
                     layer.msg(data['msg']);
                 }
-            }
-    );
+            });
     }
 }
 
