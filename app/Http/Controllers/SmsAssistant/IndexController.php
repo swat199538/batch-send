@@ -31,12 +31,15 @@ class IndexController extends Controller
         }
         $info = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
         $template = $assistantTemple->getTempleByCategory($TempleInfo->category_id, 1);
+        $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
+        setcookie('unsent', count($unsent), time()+3600*168, '/');
         $assistantTemple->increment('click_count');
         return view('tool.groupSend')->with([
             'TempleInfo'=>$TempleInfo,
             'template'=>$template,
             'category'=>$category->all()->toArray(),
-            'info'=>$info
+            'info'=>$info,
+            'unsent'=>$unsent
         ]);
     }
 
@@ -102,12 +105,14 @@ class IndexController extends Controller
 
             $template = $assistantTemple->getTempleByCategory($data['obj']->category_id, 1);
             $info2 = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
-//            dd($info2);
+            $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
+
             return view('tool.importSend')->with([
                 'TempleInfo'=>$data,
                 'template'=>$template,
                 'category'=>$category->all()->toArray(),
-                'info'=>$info2
+                'info'=>$info2,
+                'unsent'=>$unsent
             ]);
 
         } else{
@@ -121,6 +126,17 @@ class IndexController extends Controller
         $page = $request->input('current');
         $response = $assistantTemple->getTempleByCategory($category, $page);
         return json_encode($response);
+    }
+
+    public function unsent($id, AssistantSubmitLog $assistantSubmitLog)
+    {
+        $info = $assistantSubmitLog->getUnsentAssignLog($this->uuid, $id);
+        if (!null){
+            $url = "http://tuser.smsbao.com/member/sms/send_assistant.jhtml?uuid=".$info->uuid."&taskId=".$info->task_id;
+            return redirect()->away($url);
+        }else{
+            return '无效操作';
+        }
     }
 
 }

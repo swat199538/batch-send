@@ -3,7 +3,6 @@
 /public/hot
 /storage/*.key
 /.idea
-/vendor
 Homestead.json
 Homestead.yaml
 .env
@@ -13,4 +12,6 @@ _ide_helper_models.php
 .phpstorm.meta.php
 /database/migrations
 .vs/
+/vendor
 !/vendor/tcg
+!/vendor/symfony

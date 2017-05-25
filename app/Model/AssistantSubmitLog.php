@@ -48,7 +48,7 @@ class AssistantSubmitLog extends Model
 
     public function getLogInfoByuuid($uuid)
     {
-        $info = $this->with('category')->where([['uuid', '=', $uuid]])->get();
+        $info = $this->with('category')->where([['uuid', '=', $uuid],['is_request', '=', 1]])->get();
         if ($info->isEmpty()){
             return null;
         } else{
@@ -59,6 +59,21 @@ class AssistantSubmitLog extends Model
     public function getImpoerInfo($id, $uuid)
     {
         return $this->where([['id', '=', $id], ['uuid', '=', $uuid]])->first();
+    }
+
+    public function getUnsentLogByUuid($uuid)
+    {
+        $info = $this->where([['uuid', '=', $uuid],['is_request', '=', 0]])->get();
+        if($info->isEmpty()){
+            return null;
+        } else{
+            return $info->toArray();
+        }
+    }
+
+    public function getUnsentAssignLog($uuid,$id)
+    {
+        return $this->where([['uuid', '=', $uuid],['is_request', '=', 0],['id','=',$id]])->first();
     }
 
 }
