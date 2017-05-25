@@ -87,10 +87,7 @@
                                 {{--<span id="chieck_info">输入检查成功后才可发送短信</span>--}}
                                 {{--</p>--}}
                                 <p>{{--<a id="check-phone" class="btn-style">输入检查</a>--}}
-                                    <a id="sendSms" class="btn-style">发送</a>
-                                    @if($unsent!=null)
-                                        <a id="unsent" class="btn-style">未发送记录</a>
-                                    @endif
+                                    <a id="sendSms" class="btn-style">发送</a><a id="unsent" class="btn-style">未发送记录</a>
                                 </p>
                             </div>
 
@@ -486,9 +483,9 @@
     $(document).ready(function () {
         countWord();
     });
-
+    var unsentDom = '';
     @if($unsent!=null)
-        var unsentDom = '<div class="unsent-wrapper">' +
+        unsentDom = '<div class="unsent-wrapper">' +
             @foreach($unsent as $key=>$value)
                 '<div class="unsent-msg">' +
                 '<div class="unsent-content">{{$value['content']}}</div>' +
@@ -511,6 +508,9 @@
     }
     $("#unsent").on('click', function () {
         layer.closeAll();
+        if(unsentDom === ''){
+            unsentDom = '<div style="width: 150px;margin: 0 auto;">没有未发送记录！</div>';
+        }
        alertUnsent(unsentDom);
     });
 
