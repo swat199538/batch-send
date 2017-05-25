@@ -86,7 +86,11 @@
                                 {{--<p class="input-info"><span class="notice-icon"></span>--}}
                                 {{--<span id="chieck_info">输入检查成功后才可发送短信</span>--}}
                                 {{--</p>--}}
-                                <p>{{--<a id="check-phone" class="btn-style">输入检查</a>--}}<a id="sendSms" class="btn-style">发送</a></p>
+                                <p>{{--<a id="check-phone" class="btn-style">输入检查</a>--}}<a id="sendSms" class="btn-style">发送</a>
+                                    @if($unsent!=null)
+                                        <a id="unsent" class="btn-style">未发送记录</a>
+                                    @endif
+                                </p>
                             </div>
 
                         </form>
@@ -486,6 +490,33 @@
         countWord();
         checkPhone(false);
         resetWidth($("#signature"));
+    });
+
+    @if($unsent!=null)
+        var unsentDom = '<div class="unsent-wrapper">' +
+        @foreach($unsent as $key=>$value)
+            '<div class="unsent-msg">' +
+            '<div class="unsent-content">{{$value['content']}}</div>' +
+            '<div class="unsent-button"><a href="{{url('/unsent',['id'=>$value['id']])}}">[发送]</a></div>'+
+            '</div>' +
+        @endforeach
+            '</div>'
+        alertUnsent(unsentDom);
+    @endif
+
+    function alertUnsent(unsentDom) {
+        layer.open({
+            type:1,
+            title: '未发送短信',
+            shade:false,
+            offset:'rt',
+            area:['300px', '100%'],
+            content:unsentDom
+        });
+    }
+    $("#unsent").on('click', function () {
+        layer.closeAll();
+        alertUnsent(unsentDom);
     });
 
 

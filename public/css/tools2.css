@@ -279,3 +279,31 @@ table.gridtable td {
     border-left: solid 1px #6e879a;
     border-right: solid 1px #6e879a;
 }
+
+
+/**********************************************未发送短信*************************************/
+.unsent-wrapper{
+    margin: 0 auto;
+    width: 285px;
+}
+.unsent-msg{
+    margin-top: 5px;
+    width: 100%;
+    border: solid 1px #000000;
+    overflow: auto;
+}
+.unsent-content{
+    float: left;
+    width: 80%;
+    border-right: dashed 1px #000000;
+    text-overflow:ellipsis;
+    overflow: hidden;
+}
+.unsent-button{
+    float: right;
+    width: 15%;
+}
+.unsent-button > span{
+    width: 5px;
+}
+

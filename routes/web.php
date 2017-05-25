@@ -48,6 +48,9 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
     //Ajax获取新的分类
     Route::post('/ajax/category', 'IndexController@getTemplateByCategory');
 
+    //发送未发送记录
+    Route::get('/unsent/{id}', 'IndexController@unsent');
+
 });
 
 Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){
