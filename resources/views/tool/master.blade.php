@@ -143,6 +143,21 @@
         <ul><li>友情链接：</li><li><a href="http://www.gap.cn/" target="_blank">GAP</a> </li><li><a href="http://www.kaola.com" target="_blank">考拉网</a> </li><li><a href="http://www.luzhou.com/" target="_blank">大泸网</a> </li><li><a href="http://www.niwodai.com" target="_blank">P2P理财论坛</a> </li><li><a href="http://www.wforder.com" target="_blank">WFPHP在线订单管理系统</a> </li><li><a href="http://www.niucms.cn/" target="_blank">Niucms智慧生活系统</a> </li><li><a href="https://www.yungoucms.com/" target="_blank">yungoucms</a> </li><li><a href="https://www.lanyeyun.com" target="_blank">蓝叶云</a> </li><li><a href="http://www.zhicms.cc/" target="_blank">zhicms</a> </li><li><a href="http://www.ddy.me/" target="_blank">兜兜友</a> </li><li><a href="http://www.demohour.com/" target="_blank">点名时间</a> </li><li><a href="http://www.hua0.com/" target="_blank">花里花店</a> </li><li><a href="http://oldnavy.gap.cn/" target="_blank">Old Navy</a> </li></ul>
         <p>Copyright © 2010-2014 smsbao.com All Rights Reserved <br>上海子橙电子科技有限公司 沪ICP备14008182号-1 上海市松江区广富林路658弄215号</p>
     </div>
+    <script>
+        function response(words){
+            if(words == 'error'){
+                console.log('你好');
+            }else{
+                document.cookie="username="+words;
+                login(words);
+            }
+        }
+        function login(words){
+            $(".first").html('<a href="http://www.smsbao.com/member/index.jhtml">'+words+'</a>')
+            $(".last").html('<a href="http://www.smsbao.com/logout.jhtml">退出</a>')
+        }
+        </script>
+    <script src="http://twww.smsbao.com/service.php?callback=response"></script>
 </div>
 </body>
 </html>
