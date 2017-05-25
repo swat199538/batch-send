@@ -11,13 +11,13 @@
             <div class="container">
                 <div class="column one-half">
                     <h1 class="directory-header">
-                        短信宝短信插件
+                        短信宝短信模版
                     </h1>
                     <h2 class="directory-tag">
-                        海纳百川，为众多开源程序提供短信插件
+                        奇思妙想，为您提供创意十足的短信模版
                     </h2>
                     <p class="lead">
-                        安全稳定的短信插件，帮助您的网站快速获得发送短信的能力
+                        安全稳定的短信服务，帮助您的网站快速获得发送短信的能力
                     </p>
                 </div>
                 <div class="marketing-graphic column one-two">
