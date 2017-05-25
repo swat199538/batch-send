@@ -68,7 +68,11 @@
                                         </div></li>
                                 @endforeach
                             </ul>
-                            <?php echo $temple->render(); ?>
+                            @if ($search=='')
+                                <?php echo $temple->render(); ?>
+                            @else
+                                <?php echo $temple->appends(['search' => $search])->render(); ?>
+                            @endif
                         </div>
                     </div>
                 </div>

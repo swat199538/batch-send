@@ -28,6 +28,7 @@ class IndexController extends Controller
             Voyager::model('AsCategory')->increment('click_count');
             $temple = Voyager::model('AssistantTemple')->where('category_id',$cid)->paginate(12);
             $topSms = $this->topSms($cid);
+            $search = '';
         }
         $Tool = Voyager::model('AsCategory')->whereNotIn('status',[2])->get();
         $topTool = Voyager::model('AsCategory')->whereNotIn('status',[2])->orderBy('order','desc')->limit(5)->get();
@@ -39,7 +40,7 @@ class IndexController extends Controller
             }
             $temple[$key]->{"content"} = $content;
         }
-        return view('tool.content.tools')->with(['category'=>$category,'temple'=>$temple,'topSms'=>$topSms,'topTool'=>$topTool,'tool'=>$Tool]);
+        return view('tool.content.tools')->with(['category'=>$category,'temple'=>$temple,'topSms'=>$topSms,'topTool'=>$topTool,'tool'=>$Tool,'search'=>$search]);
     }
 
     public function topSms($cid){
