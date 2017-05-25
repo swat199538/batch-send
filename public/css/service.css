@@ -88,9 +88,9 @@ html{background-color: #ffffff !important;}
 .services-content .service-right .hot span{font-size:17px;margin:20px 0 0 15px;width:220px;display:block;font-weight:bolder;color:#626262;padding-bottom:5px;border-bottom:1px solid #c3c3c3;}
 .services-content .service-right .hot .phone{margin:5px 27px;font-size:16px;background:url(../img/pro-msg-model.png) 0px 0px no-repeat;min-height:378px;width:200px;}
 .services-content .service-right .hot .phone .mask{padding-top:76px;height:253px;overflow:hidden;}
-.services-content .service-right .hot ul li{float:right;margin-top:10px;margin-right:18px;display:none;font-size:12px;width:135px;background:#b5b5b5;padding:10px;border-radius:15px;color:#eee;}
-.services-content .service-right .hot ul li a{color:#fff;}
-/*.services-content .service-right .hot ul li a:hover{color:#f5fb06;}*/
+.services-content .service-right .hot ul li{float:right;margin-top:10px;margin-right:18px;display:none;font-size:12px;width:135px;background:#e2dfdf;padding:10px;border-radius:15px;color:#eee;}
+.services-content .service-right .hot ul li a{color:#000;}
+.services-content .service-right .hot ul li a:hover{color:#f5fb06;}
 .services-content .service-right .hot .phone .show{display:block}
 .search {overflow:hidden;}
 .search .ss{float:left;height:35px;width:180px;padding-left:10px;border:2px solid #e0e0e0;border-top-left-radius:5px;border-bottom-left-radius:5px;}
