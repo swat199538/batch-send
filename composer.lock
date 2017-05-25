@@ -2905,6 +2905,63 @@
             "time": "2017-05-01T14:55:58+00:00"
         },
         {
+            "name": "tcg/voyager",
+            "version": "v0.11.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/the-control-group/voyager.git",
+                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/the-control-group/voyager/10622dc41248ac45747376a873ce3519f92d6f0d.zip",
+                "reference": "10622dc41248ac45747376a873ce3519f92d6f0d",
+                "shasum": ""
+            },
+            "require": {
+                "arrilot/laravel-widgets": "^3.7",
+                "doctrine/dbal": "^2.5",
+                "illuminate/support": "~5.3.0|~5.4.0",
+                "intervention/image": "^2.3",
+                "larapack/doctrine-support": "~0.1.0",
+                "league/flysystem": "~1.0.35"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "laravel/browser-kit-testing": "~1.0.0",
+                "laravel/framework": "~5.3.29|5.4.*",
+                "orchestra/database": "3.3.*|3.4.x-dev",
+                "orchestra/testbench": "3.3.*|3.4.x-dev",
+                "orchestra/testbench-browser-kit": "~3.3.0|~3.4.0",
+                "phpunit/phpcov": "~3.0",
+                "phpunit/phpunit": "~5.7.14"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TCG\\Voyager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tony Lea",
+                    "email": "tony.lea@thecontrolgroup.com"
+                }
+            ],
+            "description": "A Laravel Admin Package for The Control Group to make your life easier and steer your project in the right direction",
+            "homepage": "https://the-control-group.github.io/voyager/",
+            "keywords": [
+                "admin",
+                "laravel",
+                "panel"
+            ],
+            "time": "2017-05-24T09:21:25+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.0",
             "source": {
