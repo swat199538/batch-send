@@ -102,7 +102,7 @@ html{background-color: #ffffff !important;}
 .services-content .category ul li{width:15%;float:left;min-height:80px;}
 .services-content .category ul li:hover{background:#e3e3e3;color:#eee;}
 .services-content .category ul li a i{float:left;margin-top:8px;padding-left:5%;}
-.services-content .category ul li a h3{float:left;padding-left:20px;color:#689260;line-height:80px;font-size:20px;}
+.services-content .category ul li a h3{float:left;padding-left:20px;color:#689260;line-height:80px;font-size:15px;}
 .services-content .service-right .search form{margin-bottom:12px;overflow:hidden;}
 .services-content .service-right .search h3{font-weight:bolder;color:#6a962c;}
 .services-content .service-right .search .tag{margin-right:20px;margin-top:3px;color:#444;}
