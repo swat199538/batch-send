@@ -28,23 +28,23 @@
         <div class="nav_main">
             <div class="nav_main_div"><a title="短信宝短信平台" href="/"><img src="http://www.smsbao.com/images/logo.png" alt="短信宝短信平台"></a></div>
             <ul class="nav_main_ul_one">
-                <li class="nav_item"><a title="短信宝首页" href="/">首 页</a></li>
+                <li class="nav_item"><a title="短信宝首页" href="http://twww.smsbao.com/">首 页</a></li>
                 <li class="nav_item show_column">
                     <a href="javascript:void(0);">黑板报</a>
                     <ul class="columnShow-inline" style="display: none; width: 100px; position: absolute; top: 60px; z-index: 200; overflow: hidden; border-top: none; border-right: 1px solid rgb(238, 238, 238); border-bottom: 1px solid rgb(238, 238, 238); border-left: 1px solid rgb(238, 238, 238); border-image: initial;">
                         <li>
-                            <h3><a title="短信谁在用" href="/buzz" target="_blank">谁 在 用</a></h3>
+                            <h3><a title="短信谁在用" href="http://twww.smsbao.com/buzz" target="_blank">谁 在 用</a></h3>
                         </li>
                         <li>
-                            <h3><a title="干货分享" href="/application" target="_blank">干货分享</a></h3>
+                            <h3><a title="干货分享" href="http://twww.smsbao.com/application" target="_blank">干货分享</a></h3>
                         </li>
                     </ul>
                 </li>
-                <li class="nav_item"><a title="使用指南" href="/help">使用指南</a></li>
-                <li class="nav_item"><a title="短信接口" href="/openapi">短信接口</a></li>
-                <li class="nav_item"><a title="短信插件" href="/plugin">建站插件</a></li>
+                <li class="nav_item"><a title="使用指南" href="http://twww.smsbao.com/help">使用指南</a></li>
+                <li class="nav_item"><a title="短信接口" href="http://twww.smsbao.com/openapi">短信接口</a></li>
+                <li class="nav_item"><a title="短信插件" href="http://twww.smsbao.com/plugin">建站插件</a></li>
                 <!--<li class="nav_item"><a title="合作联盟" href="/joinin">合作联盟</a></li>-->
-                <li class="nav_item"><a title="短信价格查询" href="/fee">资费标准</a></li>
+                <li class="nav_item"><a title="短信价格查询" href="http://twww.smsbao.com/fee">资费标准</a></li>
             </ul>
         </div>
     </div>
