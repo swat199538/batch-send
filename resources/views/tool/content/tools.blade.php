@@ -11,10 +11,10 @@
             <div class="container">
                 <div class="column one-half">
                     <h1 class="directory-header">
-                        短信宝短信模版
+                        短信宝短信助手
                     </h1>
                     <h2 class="directory-tag">
-                        奇思妙想，为您提供创意十足的短信模版
+                        奇思妙想，为您提供创意十足的短信助手
                     </h2>
                     <p class="lead">
                         安全稳定的短信服务，帮助您的网站快速获得发送短信的能力
@@ -29,7 +29,7 @@
         <!--服务导航开始-->
         <div class="services-nav">
             <div class="about_site">
-                你的位置：<a href="">短信宝</a>><a href="">短信服务</a>
+                你的位置：<a href="">短信宝</a>><a href="">短信助手</a>
             </div>
         </div>
         <!--服务导航结束-->
@@ -53,7 +53,7 @@
                         <div class="services-show-s">
                             <div class="services-title">
                                 <div id="date"></div>
-                                <h3>{{$category->name}}模板</h3>
+                                <h3>{{$category->name}}短信助手</h3>
                             </div>
                             @if (count($temple)==0)
                                 <h3>没有搜索到你所需要的内容。</h3>
