@@ -307,3 +307,29 @@ table.gridtable td {
     width: 5px;
 }
 
+/*******************************让强迫症绝望的小红点提示********************************/
+.unsent-msg-box{
+    position: fixed;
+    top: 279px;
+    right: 163px;
+    width: 32px;
+    height: 32px;
+    background:  url(../img/sms.png) no-repeat center center;
+    cursor: pointer;
+}
+.icon-car-count {
+    min-width: 14px;
+    text-align: center;
+    line-height: 14px;
+    display: inline-block;
+    position: absolute;
+    right: 3px;
+    top: 8px;
+    background: red;
+    color: #fff;
+    border-radius: 17px;
+    padding: 6px;
+    font-size: 16px;
+    transform: scale(.7);
+    font-family: Tahoma!important;
+}

@@ -32,14 +32,16 @@ class IndexController extends Controller
         $info = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
         $template = $assistantTemple->getTempleByCategory($TempleInfo->category_id, 1);
         $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
-        setcookie('unsent', count($unsent), time()+3600*168, '/');
+        $unsentCount =count($unsent);
+        setcookie('unsent', $unsentCount, time()+3600*168, '/');
         $assistantTemple->increment('click_count');
         return view('tool.groupSend')->with([
             'TempleInfo'=>$TempleInfo,
             'template'=>$template,
             'category'=>$category->all()->toArray(),
             'info'=>$info,
-            'unsent'=>$unsent
+            'unsent'=>$unsent,
+            'unsentCount'=>$unsentCount
         ]);
     }
 
@@ -106,13 +108,16 @@ class IndexController extends Controller
             $template = $assistantTemple->getTempleByCategory($data['obj']->category_id, 1);
             $info2 = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
             $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
+            $unsentCount =count($unsent);
+            setcookie('unsent', $unsentCount, time()+3600*168, '/');
 
             return view('tool.importSend')->with([
                 'TempleInfo'=>$data,
                 'template'=>$template,
                 'category'=>$category->all()->toArray(),
                 'info'=>$info2,
-                'unsent'=>$unsent
+                'unsent'=>$unsent,
+                'unsentCount'=>$unsentCount
             ]);
 
         } else{

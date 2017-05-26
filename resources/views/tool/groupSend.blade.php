@@ -87,7 +87,7 @@
                                 {{--<span id="chieck_info">输入检查成功后才可发送短信</span>--}}
                                 {{--</p>--}}
                                 <p>{{--<a id="check-phone" class="btn-style">输入检查</a>--}}
-                                    <a id="sendSms" class="btn-style">发送</a><a id="unsent" class="btn-style">未发送记录</a>
+                                    <a id="sendSms" class="btn-style">发送</a>
                                 </p>
                             </div>
 
@@ -163,7 +163,11 @@
             </div>
         </div>
     </div>
-
+        <div id="unsent" class="unsent-msg-box">
+            @if($unsentCount>0)
+            <span class="icon-car-count">{{$unsentCount}}</span>
+            @endif
+        </div>
 </div>
 <script>
     //选择分类对象
