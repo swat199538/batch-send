@@ -139,11 +139,10 @@
                 <table class="gridtable">
                     @if($info != null)
                         <tr>
-                            <th>助手</th>
-                            <th>发送内容</th>
-                            <th>发送时间</th>
-                            <th>发送号码数量</th>
-                            <th>发送金额</th>
+                            <th>助手分类</th>
+                            <th>提交内容</th>
+                            <th>提交时间</th>
+                            <th>号码数量</th>
                             <th>操作</th>
                         </tr>
                         @foreach($info as $key=>$value)
@@ -152,7 +151,6 @@
                                 <td>{{$value['content']}}</td>
                                 <td>{{$value['created_at']}}</td>
                                 <td>{{count(json_decode($value['phone'], true))}}个号码</td>
-                                <td>￥{{count(json_decode($value['phone'], true))*$value['category']['price']}}</td>
                                 <td style="cursor: pointer;"><a href="{{url('/import', ['id'=>$value['id']])}}">再次发送</a></td>
                             </tr>
                         @endforeach
@@ -415,7 +413,7 @@
             current = 111
         }
         $obj.css('width', current+'px');
-        $("#msg-content").css('text-indent', current+14+'px');
+        $("#msg-content").css('text-indent', current+29+'px');
     }
 
     $("#signature").on(
