@@ -29,7 +29,7 @@
         <!--服务导航开始-->
         <div class="services-nav">
             <div class="about_site">
-                你的位置：<a href="">短信宝</a>><a href="">短信服务</a>
+                你的位置：<a href="">短信宝</a>><a href="">短信助手</a>
             </div>
         </div>
         <!--服务导航结束-->
