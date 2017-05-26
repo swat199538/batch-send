@@ -14,4 +14,3 @@ _ide_helper_models.php
 .vs/
 /vendor
 !/vendor/tcg
-!/vendor/symfony
