@@ -49,7 +49,6 @@ class IndexController extends Controller
             $content = $row->{"content"};
             if(strlen($content)>=50){
                 $content = mb_substr($content,0,200);
-                $content .='...';
             }
             $topSms[$key]->{"content"} = $content;
         }
