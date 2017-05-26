@@ -17,7 +17,7 @@ class IndexController extends Controller
         $this->uuid = $request->cookie('uuid');
         if($this->uuid == null){
             $cookieValue = md5(time().rand(10000,99999));
-            setcookie('uuid', $cookieValue, time()+3600*168, '/');
+            setcookie('uuid', $cookieValue, time()+3600*168, 'smsbao.com');
             $this->uuid = $cookieValue;
         }
     }
@@ -33,7 +33,7 @@ class IndexController extends Controller
         $template = $assistantTemple->getTempleByCategory($TempleInfo->category_id, 1);
         $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
         $unsentCount =count($unsent);
-        setcookie('unsent', $unsentCount, time()+3600*168, '/');
+        setcookie('unsent', $unsentCount, time()+3600*168, '.smsbao.com');
         $assistantTemple->increment('click_count');
         return view('tool.groupSend')->with([
             'TempleInfo'=>$TempleInfo,
@@ -109,7 +109,7 @@ class IndexController extends Controller
             $info2 = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
             $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
             $unsentCount =count($unsent);
-            setcookie('unsent', $unsentCount, time()+3600*168, '/');
+            setcookie('unsent', $unsentCount, time()+3600*168, '.smsbao.com');
 
             return view('tool.importSend')->with([
                 'TempleInfo'=>$data,
