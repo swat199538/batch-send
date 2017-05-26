@@ -58,7 +58,7 @@ html{background-color: #ffffff !important;}
 .services-content .sitecon .services-title{height:70px;background:#fff;border-top-left-radius:25px;border-top-right-radius:25px;}
 .services-content .sitecon .services-title .date{line-height:38px;float:left;color:#606060;font-size:20px;padding-left:30px;cursor:pointer;margin-top:23px;}
 .services-content .sitecon .services-title .date p{float:left;}
-.services-content .sitecon .services-title h3{color:#606060;line-height:70px;width:180px;margin:0 auto;text-align:center;font-size:25px;}
+.services-content .sitecon .services-title h3{color:#606060;line-height:70px;width:auto;margin:0 auto;text-align:center;font-size:25px;}
 .services-content .sitecon .services-title a{color:#606060;display:block;width:50px;position:relative;right:-675px;top:-43px;font-size:20px;}
 .services-content .sitecon .services-title a:hover{color:#b1b1b1;}
 .services-content .sitecon .services-show-s ul {height:804px;}
