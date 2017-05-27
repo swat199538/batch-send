@@ -154,7 +154,7 @@
         })
 
         function getwfs(source){
-            wfs.html('<a style="background:url(../img/sms1.png) no-repeat center center;height:26px;" href=""><div class="num">'+source+'</div></a>')
+            wfs.html('<a style="background:url(../img/sms1.png) no-repeat center center;height:26px;" href="http://tassistant.smsbao.com/unsent"><div class="num">'+source+'</div></a>')
         }
 
         function getCookie(name)
