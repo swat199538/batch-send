@@ -154,7 +154,7 @@
         })
 
         function getwfs(source){
-            wfs.html('<a style="background:url(../img/sms1.png) no-repeat center center;height:26px;" href="http://tassistant.smsbao.com/unsent"><div class="num">'+source+'</div></a>')
+            wfs.html('<a style="height:26px;" href="http://tassistant.smsbao.com/unsent"><img src="/public/img/sms1.png" style="height:20px;width:20px;"><div class="num">未提交短信'+source+'条</div></a>')
         }
 
         function getCookie(name)
