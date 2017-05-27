@@ -110,8 +110,6 @@ html{background-color: #ffffff !important;}
 .services-content .category ul{overflow:hidden;}
 .pagination .disabled{color:#eee;}
 .wrapper .footer{display:none;}
-#current_member .wfs a img{float:left;margin-top:5px;}
-#current_member .wfs .num{float:left;margin-left:5px;height:15px;margin-top:9px;line-height:15px;text-align:center;}
-#current_member .wfs a .num:hover{color:#00ff00;text-decoration: underline;}
+
 
 

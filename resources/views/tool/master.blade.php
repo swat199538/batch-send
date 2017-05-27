@@ -148,13 +148,14 @@
         var wfs = $(".wfs");
         $(function(){
             var source=getCookie('unsent');
+            source = 1;
             if( source > 0){
                 getwfs(source);
             }
         })
 
         function getwfs(source){
-            wfs.html('<a style="height:26px;" href="http://tassistant.smsbao.com/unsent"><img src="/public/img/sms1.png" style="height:20px;width:20px;"><div class="num">未提交短信'+source+'条</div></a>')
+            wfs.html('<a style="height:26px;" href="http://tassistant.smsbao.com/unsent"><img src="http://twww.smsbao.com/images/v2/sms.png" style="height:20px;width:20px;"><div class="num">未提交短信'+source+'条</div></a>')
         }
 
         function getCookie(name)

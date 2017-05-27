@@ -558,3 +558,6 @@ span.angel {background: url(../images/angel_3.png) no-repeat left 0px;position: 
 .search-btn{position:absolute;top:3px;right:0; right:22px\9; z-index:22;width:30px;height:30px;background:url(../images/search-btn.gif) no-repeat;border:0}
 .footer-box .first{float:left;display:block;margin:3px 10px;padding:5px;}
 .webContainer .product{width:445px;}
+#current_member .wfs a img{float:left;margin-top:5px;}
+#current_member .wfs .num{float:left;margin-left:5px;height:15px;margin-top:9px;line-height:15px;text-align:center;}
+#current_member .wfs a .num:hover{color:#00ff00;text-decoration: underline;}
