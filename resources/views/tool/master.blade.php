@@ -18,6 +18,7 @@
                     <li class="tel last">400-716-3021</li>
                 </ul>
                 <ul id="current_member" class="user-bar" style="float:right">
+                    <li class="wfs"></li>
                     <li class="active first"><a title="短信宝用户登入" href="http://twww.smsbao.com/login">登录</a></li>
                     <li class="last"><a title="短信宝用户注册" href="http://twww.smsbao.com/login">注册</a></li>
                 </ul>
@@ -26,7 +27,7 @@
     </div>
     <div id="nav">
         <div class="nav_main">
-            <div class="nav_main_div"><a title="短信宝短信平台" href="/"><img src="http://www.smsbao.com/images/logo.png" alt="短信宝短信平台"></a></div>
+            <div class="nav_main_div"><a title="短信宝短信平台" href="http://twww.smsbao.com/"><img src="http://www.smsbao.com/images/logo.png" alt="短信宝短信平台"></a></div>
             <ul class="nav_main_ul_one">
                 <li class="nav_item"><a title="短信宝首页" href="http://twww.smsbao.com/">首 页</a></li>
                 <li class="nav_item show_column">
@@ -143,6 +144,30 @@
         <ul><li>友情链接：</li><li><a href="http://www.gap.cn/" target="_blank">GAP</a> </li><li><a href="http://www.kaola.com" target="_blank">考拉网</a> </li><li><a href="http://www.luzhou.com/" target="_blank">大泸网</a> </li><li><a href="http://www.niwodai.com" target="_blank">P2P理财论坛</a> </li><li><a href="http://www.wforder.com" target="_blank">WFPHP在线订单管理系统</a> </li><li><a href="http://www.niucms.cn/" target="_blank">Niucms智慧生活系统</a> </li><li><a href="https://www.yungoucms.com/" target="_blank">yungoucms</a> </li><li><a href="https://www.lanyeyun.com" target="_blank">蓝叶云</a> </li><li><a href="http://www.zhicms.cc/" target="_blank">zhicms</a> </li><li><a href="http://www.ddy.me/" target="_blank">兜兜友</a> </li><li><a href="http://www.demohour.com/" target="_blank">点名时间</a> </li><li><a href="http://www.hua0.com/" target="_blank">花里花店</a> </li><li><a href="http://oldnavy.gap.cn/" target="_blank">Old Navy</a> </li></ul>
         <p>Copyright © 2010-2014 smsbao.com All Rights Reserved <br>上海子橙电子科技有限公司 沪ICP备14008182号-1 上海市松江区广富林路658弄215号</p>
     </div>
+    <script>
+        var wfs = $(".wfs");
+        $(function(){
+            var source=getCookie('unsent');
+            if( source > 0){
+                getwfs(source);
+            }
+        })
+
+        function getwfs(source){
+            wfs.html('<a style="background:url(../img/sms1.png) no-repeat center center;height:26px;" href="http://tassistant.smsbao.com/unsent"><div class="num">'+source+'</div></a>')
+        }
+
+        function getCookie(name)
+        {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+            if(arr=document.cookie.match(reg))
+
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+    </script>
     <script>
         function response(words){
             if(words == 'error'){
