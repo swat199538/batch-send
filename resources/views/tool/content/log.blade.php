@@ -10,18 +10,6 @@
         <div class="title"><h3 style=>发送历史</h3></div>
         <div class="main">
             <table class="main-log">
-                <thead>
-                <tr>
-                    <th style="width:510px;">
-                        <div class="main-l">分类</div>
-                        <div class="main-r">发送内容</div>
-                    </th>
-                    <th><h3>总金额金额</h3></th>
-                    <th><h3>状态</h3></th>
-                    <th><h3>操作</h3></th>
-                </tr>
-                </thead>
-
                 @if($info == null)
                     <tbody>
                     没有记录
@@ -40,25 +28,26 @@
                         </tr>
                         <tr class="tr-bd">
                             <td>
+                               <span class="tooltip">{{$value['category']['name']}}</span>
+                            </td>
+                            <td>
                                 <div class="goods-item">
-                                    <div class="p-img">
-                                        <img src="/storage/{{$value['category']['image']}}">
-                                    </div>
+                                    {{--<div class="p-img">--}}
+                                        {{--<img src="/storage/{{$value['category']['image']}}">--}}
+                                    {{--</div>--}}
                                     <div class="p-msg">
                                         {{$value['content']}}
                                     </div>
                                 </div>
-                                <div class="goods-number">X{{count(json_decode($value['phone'], true))}}</div>
                             </td>
                             <td rowspan="1">
-                                <span class="tooltip">￥{{count(json_decode($value['phone'], true))*$value['category']['price']}}</span>
-                                <span><img src="{{asset('img/coin.png')}}"></span>
+                                <span class="tooltip">{{count(json_decode($value['phone'], true))}}个手机号码</span>
                             </td>
-                            <td rowspan="1">
-                                <span class="tooltip">已完成</span>
-                            </td>
+                            {{--<td rowspan="1">--}}
+                                {{--<span class="tooltip">已完成</span>--}}
+                            {{--</td>--}}
                             <td  rowspan="1">
-                                <a class="again" href="{{url('/import',['id'=>$value['id']])}}">再次发送</a>
+                                <a class="again" href="{{url('/unsent',['id'=>$value['id']])}}">发送</a>
                             </td>
                         </tr>
                         </tbody>

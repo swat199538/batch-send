@@ -63,7 +63,8 @@ class AssistantSubmitLog extends Model
 
     public function getUnsentLogByUuid($uuid)
     {
-        $info = $this->where([['uuid', '=', $uuid],['is_request', '=', 0]])->get();
+        $info = $this->where([['uuid', '=', $uuid],['is_request', '=', 0]])
+            ->with('category')->get();
         if($info->isEmpty()){
             return null;
         } else{

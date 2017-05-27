@@ -51,6 +51,9 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
     //发送未发送记录
     Route::get('/unsent/{id}', 'IndexController@unsent');
 
+    //未发送记录视图页面
+    Route::get('/unsent', 'IndexController@unsentView');
+
 });
 
 Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){

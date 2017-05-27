@@ -146,4 +146,10 @@ class IndexController extends Controller
         }
     }
 
+    public function unsentView(AssistantSubmitLog $assistantSubmitLog)
+    {
+        $info = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
+        return view('tool.content.log')->with(['info'=>$info]);
+    }
+
 }
