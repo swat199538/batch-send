@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     @yield('title')
+    <link rel="shortcut icon" href="{{URL::asset('/img/favicon.ico')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/common.css')}}">
     @yield('css')
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
