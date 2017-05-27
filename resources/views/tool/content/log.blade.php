@@ -6,8 +6,7 @@
 
 @section('content')
     <div id="content">
-        <title>历史记录</title>
-        <div class="title"><h3 style=>发送历史</h3></div>
+        <div class="title"><h3 style=>未提交短信</h3></div>
         <div class="main">
             <table class="main-log">
                 @if($info == null)
