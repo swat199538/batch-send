@@ -7,6 +7,7 @@ use App\Model\AssistantSubmitLog;
 use App\Model\assistantTemple;
 use App\Model\category;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class IndexController extends Controller
 {
@@ -17,7 +18,7 @@ class IndexController extends Controller
         $this->uuid = $request->cookie('uuid');
         if($this->uuid == null){
             $cookieValue = md5(time().rand(10000,99999));
-            setcookie('uuid', $cookieValue, time()+3600*168, 'smsbao.com');
+            setcookie('uuid', $cookieValue, time()+3600*168, '/');
             $this->uuid = $cookieValue;
         }
     }
@@ -33,16 +34,26 @@ class IndexController extends Controller
         $template = $assistantTemple->getTempleByCategory($TempleInfo->category_id, 1);
         $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
         $unsentCount =count($unsent);
-        setcookie('unsent', $unsentCount, time()+3600*168, 'www.smsbao.com');
+        setcookie('unsent', $unsentCount, time()+3600*168, '/');
         $assistantTemple->increment('click_count');
-        return view('tool.groupSend')->with([
+/*        $view = view('tool.groupSend')->with([
             'TempleInfo'=>$TempleInfo,
             'template'=>$template,
             'category'=>$category->all()->toArray(),
             'info'=>$info,
             'unsent'=>$unsent,
             'unsentCount'=>$unsentCount
-        ]);
+        ]);*/
+
+        return response()->view('tool.groupSend',[
+            'TempleInfo'=>$TempleInfo,
+            'template'=>$template,
+            'category'=>$category->all()->toArray(),
+            'info'=>$info,
+            'unsent'=>$unsent,
+            'unsentCount'=>$unsentCount
+        ])->withCookie(cookie('test', 'name'));
+
     }
 
 
@@ -109,7 +120,7 @@ class IndexController extends Controller
             $info2 = $assistantSubmitLog->getLogInfoByuuid($this->uuid);
             $unsent = $assistantSubmitLog->getUnsentLogByUuid($this->uuid);
             $unsentCount =count($unsent);
-            setcookie('unsent', $unsentCount, time()+3600*168, 'www.smsbao.com');
+            setcookie('unsent', $unsentCount, time()+3600*168, '/');
 
             return view('tool.importSend')->with([
                 'TempleInfo'=>$data,
