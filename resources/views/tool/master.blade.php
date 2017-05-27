@@ -148,7 +148,6 @@
         var wfs = $(".wfs");
         $(function(){
             var source=getCookie('unsent');
-            source = 1;
             if( source > 0){
                 getwfs(source);
             }
