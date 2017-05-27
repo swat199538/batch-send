@@ -36,23 +36,14 @@ class IndexController extends Controller
         $unsentCount =count($unsent);
         setcookie('unsent', $unsentCount, time()+3600*168, '/');
         $assistantTemple->increment('click_count');
-/*        $view = view('tool.groupSend')->with([
+        return $view = view('tool.groupSend')->with([
             'TempleInfo'=>$TempleInfo,
             'template'=>$template,
             'category'=>$category->all()->toArray(),
             'info'=>$info,
             'unsent'=>$unsent,
             'unsentCount'=>$unsentCount
-        ]);*/
-
-        return response()->view('tool.groupSend',[
-            'TempleInfo'=>$TempleInfo,
-            'template'=>$template,
-            'category'=>$category->all()->toArray(),
-            'info'=>$info,
-            'unsent'=>$unsent,
-            'unsentCount'=>$unsentCount
-        ])->withCookie(cookie('test', 'name'));
+        ]);
 
     }
 
