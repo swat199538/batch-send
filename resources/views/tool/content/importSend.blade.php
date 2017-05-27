@@ -468,7 +468,7 @@
         function alertUnsent(unsentDom) {
             layer.open({
                 type:1,
-                title: '未发送短信',
+                title: '待发短信',
                 shade:false,
                 offset:'rt',
                 area:['300px', '100%'],
