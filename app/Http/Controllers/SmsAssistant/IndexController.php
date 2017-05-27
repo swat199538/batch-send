@@ -36,7 +36,7 @@ class IndexController extends Controller
         $unsentCount =count($unsent);
         setcookie('unsent', $unsentCount, time()+3600*168, '/', '.smsbao.com');
         $assistantTemple->increment('click_count');
-        return $view = view('tool.groupSend')->with([
+        return $view = view('tool.content.groupSend')->with([
             'TempleInfo'=>$TempleInfo,
             'template'=>$template,
             'category'=>$category->all()->toArray(),
@@ -113,7 +113,7 @@ class IndexController extends Controller
             $unsentCount =count($unsent);
             setcookie('unsent', $unsentCount, time()+3600*168, '/','.smsbao.com');
 
-            return view('tool.importSend')->with([
+            return view('tool.content.importSend')->with([
                 'TempleInfo'=>$data,
                 'template'=>$template,
                 'category'=>$category->all()->toArray(),

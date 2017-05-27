@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>营销短信群发</title>
+    @yield('title')
     <link rel="stylesheet" type="text/css" href="{{URL::asset('/css/common.css')}}">
     @yield('css')
     <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
