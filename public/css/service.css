@@ -110,5 +110,8 @@ html{background-color: #ffffff !important;}
 .services-content .category ul{overflow:hidden;}
 .pagination .disabled{color:#eee;}
 .wrapper .footer{display:none;}
+#current_member .wfs img{float:left;}
+#current_member .wfs a .num{float:left;margin-left:5px;height:15px;width:15px;background:#c33d3d;margin-top:9px;line-height:15px;text-align:center;border-radius:15px;}
+#current_member .wfs a .num:hover{color:#00ff00;background:#eee;}
 
 
