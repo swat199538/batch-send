@@ -23,6 +23,8 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
     //新的短信群发页面
     Route::get('/qunfa/{id}', 'IndexController@index');
 
+    Route::get('/batch/send/{id}', 'IndexController@index');
+
     //文件上传
     Route::any('/upload', 'ExcelController@upload');
 
@@ -56,7 +58,12 @@ Route::group(['namespace'=>'SmsAssistant'], function(){
 
 });
 
-Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){
+//Route::group(['namespace' => 'SmsTools','prefix' => 'smstool'],function(){
+//    Route::get('/','IndexController@index')->name('mysearch');;
+//    Route::get('/{cid}','IndexController@index');
+//});
+
+Route::group(['namespace' => 'SmsTools','prefix' => 'batch'],function(){
     Route::get('/','IndexController@index')->name('mysearch');;
     Route::get('/{cid}','IndexController@index');
 });
